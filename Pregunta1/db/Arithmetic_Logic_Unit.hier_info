@@ -1,0 +1,23 @@
+|ALU
+op[0] => ~NO_FANOUT~
+op[1] => ~NO_FANOUT~
+op[2] => ~NO_FANOUT~
+op[3] => ~NO_FANOUT~
+num1[0] => ~NO_FANOUT~
+num1[1] => ~NO_FANOUT~
+num1[2] => ~NO_FANOUT~
+num1[3] => ~NO_FANOUT~
+num2[0] => ~NO_FANOUT~
+num2[1] => ~NO_FANOUT~
+num2[2] => ~NO_FANOUT~
+num2[3] => ~NO_FANOUT~
+result[0] <= <GND>
+result[1] <= <GND>
+result[2] <= <GND>
+result[3] <= <GND>
+Z <= <GND>
+N <= <GND>
+V <= <GND>
+C <= <GND>
+
+
