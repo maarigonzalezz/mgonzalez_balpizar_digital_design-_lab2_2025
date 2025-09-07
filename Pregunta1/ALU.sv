@@ -48,6 +48,45 @@ module ALU #(parameter n = 4)(
    assign sright_result = num1 >> num2[$clog2(n)-1:0];
 	
 	
+	// Selección de resultado según op
+    always_comb begin
+        case(op)
+            4'b0000: result = sum_result;       // Suma
+            4'b0001: result = rest_result;      // Resta
+            4'b0010: result = and_result;       // AND
+            4'b0011: result = or_result;        // OR
+            4'b0100: result = xor_result;       // XOR
+            4'b0101: result = sleft_result;     // Shift left
+            4'b0110: result = sright_result;    // Shift right
+            4'b0111: result = mult_result;      // Multiplicación
+            4'b1000: result = div_result;       // División
+            4'b1001: result = mod_result;       // Módulo
+            default: result = {n{1'b0}};
+        endcase
+    end
+
+    // Flags
+    always_comb begin
+        // Zero
+        Z = (result == 0);
+
+        // Negative (bit más significativo)
+        N = result[n-1];
+
+        // Carry / Borrow
+        case(op)
+            4'b0000: C = carry_sum;      // Suma: carry out
+            4'b0001: C = borrow_final;   // Resta: borrow
+            default: C = 0;
+        endcase
+
+        // Overflow (solo suma y resta)
+        case(op)
+            4'b0000: V = (num1[n-1] == num2[n-1]) && (result[n-1] != num1[n-1]);
+            4'b0001: V = (num1[n-1] != num2[n-1]) && (result[n-1] != num1[n-1]);
+            default: V = 0;
+        endcase
+    end
 	
 	
 	
