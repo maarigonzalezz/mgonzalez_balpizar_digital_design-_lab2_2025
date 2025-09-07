@@ -7,6 +7,7 @@ module ALU #(parameter n = 4)(
 	logic [2*n-1:0] mult_result;
 	logic [n-1:0] sum_result, rest_result, div_result, mod_result;
 	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;
+	logic [n-1:0] remainder;
 	
 	
 	// Instancia de Suma
@@ -67,13 +68,22 @@ nbit_multiplier #(
             4'b0101: result = sleft_result;     		// Shift left
             4'b0110: result = sright_result;    		// Shift right
             4'b0111: result = mult_result[n-1:0];   	// Multiplicación (truncada a n bits)
-            4'b1000: result = div_result;       		// División
+            // División
+            4'b0111: begin
+                if (num2 != 0) begin
+                    result   = num1 / num2;  // cociente
+                    remainder = num1 % num2; // residuo
+                end else begin
+                    result   = {n{1'b0}};    // división por 0 → resultado 0
+                    remainder = {n{1'b0}};
+                end
+            end
             4'b1001: result = mod_result;       		// Módulo
             default: result = {n{1'b0}};
         endcase
     end
 
-    // Flags
+    // ---------------------- Flags ----------------------
     always_comb begin
         // Zero
         Z = (result == 0);
@@ -81,22 +91,65 @@ nbit_multiplier #(
         // Negative (bit más significativo)
         N = result[n-1];
 
-        // Carry / Borrow
+        // Carry / Borrow / Overflow
         case(op)
-            4'b0000: C = carry_sum;      // Suma: carry out
-            4'b0001: C = borrow_final;   // Resta: borrow
-            default: C = 0;
-        endcase
+		  
+            // SUMA
+            4'b0000: begin
+                C = carry_sum; // carry de la suma
+                V = (num1[n-1] == num2[n-1]) && (result[n-1] != num1[n-1]);
+            end
 
-        // Overflow (solo suma y resta)
-        case(op)
-            4'b0000: V = (num1[n-1] == num2[n-1]) && (result[n-1] != num1[n-1]);
-            4'b0001: V = (num1[n-1] != num2[n-1]) && (result[n-1] != num1[n-1]);
-            default: V = 0;
+            // RESTA
+            4'b0001: begin
+                C = borrow_final; // borrow de la resta
+                V = (num1[n-1] != num2[n-1]) && (result[n-1] != num1[n-1]);
+            end
+
+            // AND
+            4'b0010: begin
+                C = 0;
+                V = 0;
+            end
+
+            // OR
+            4'b0011: begin
+                C = 0;
+                V = 0;
+            end
+
+            // XOR
+            4'b0100: begin
+                C = 0;
+                V = 0;
+            end
+
+            // NOT
+            4'b0101: begin
+                C = 0;
+                V = 0;
+            end
+
+            // MULTIPLICACIÓN
+            4'b0110: begin
+                // Si hay bits en mul_result[2N-1:N] → overflow en N bits
+                C = |mult_result[2*n-1:n];
+                V = C; // overflow y carry equivalentes en unsigned
+            end
+
+            // DIVISIÓN
+            4'b0111: begin
+                // Si hay residuo → carry como indicador
+                C = (remainder != 0);
+                V = 0; // no hay overflow en división positiva
+            end
+
+            default: begin
+                C = 0;
+                V = 0;
+            end
         endcase
     end
-	
-	
 	
 endmodule
 
