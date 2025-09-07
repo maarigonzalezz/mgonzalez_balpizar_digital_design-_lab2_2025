@@ -11,24 +11,24 @@ cModel Technology
 Z0 dC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/simulation/modelsim
 vALU
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1757222878
+Z2 !s110 1757226866
 !i10b 1
-!s100 [JSYmO:6FoYWGc@@JO>Sk2
+!s100 IgK>ze^KMl`4]^J[=A=Z81
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IMG4S09dOiXMc4K@mLR^_90
+I?9NL1Bo[AP1k5Y]c:bM;O2
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1757220635
+w1757226784
 8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv
 FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv
 !i122 0
-L0 1 54
+L0 1 101
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1757222878.000000
+Z6 !s108 1757226866.000000
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv|
 !i113 1
@@ -36,9 +36,35 @@ Z7 o-sv -work work
 Z8 !s92 -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1
 Z9 tCvgOpt 0
 n@a@l@u
+vbit_multiplier
+R1
+Z10 !s110 1757226867
+!i10b 1
+!s100 :ZYFXjN_81MR<`UN2bX4V2
+R3
+ImnL]mX^Q]HcSPCCBLA7;F1
+R4
+S1
+R0
+w1757225287
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv
+!i122 5
+Z11 L0 2 15
+R5
+r1
+!s85 0
+31
+Z12 !s108 1757226867.000000
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv|
+!i113 1
+R7
+R8
+R9
 vbit_subtractor
 R1
-Z10 !s110 1757222879
+R2
 !i10b 1
 !s100 :cD>Q:=?oQCAdRQf;I=jz1
 R3
@@ -55,7 +81,7 @@ R5
 r1
 !s85 0
 31
-Z11 !s108 1757222879.000000
+R6
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv|
 !i113 1
@@ -76,12 +102,12 @@ w1757221616
 8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv
 FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv
 !i122 4
-L0 2 15
+R11
 R5
 r1
 !s85 0
 31
-R11
+R6
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv|
 !i113 1
@@ -114,9 +140,35 @@ R6
 R7
 R8
 R9
-vnbit_subtractor
+vnbit_multiplier
 R1
 R10
+!i10b 1
+!s100 K=n9GRUn]Ud[h<P@?@z9f1
+R3
+Iom4ZmCza_jXXZKm5KjgS=0
+R4
+S1
+R0
+w1757226280
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv
+!i122 6
+L0 2 47
+R5
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv|
+!i113 1
+R7
+R8
+R9
+vnbit_subtractor
+R1
+R2
 !i10b 1
 !s100 4>]1iNz?:TfWGT5YCY?=[2
 R3
@@ -133,7 +185,7 @@ R5
 r1
 !s85 0
 31
-R11
+R6
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv|
 !i113 1
@@ -153,13 +205,13 @@ R0
 w1757222760
 8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv
 FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv
-!i122 5
+!i122 7
 L0 2 87
 R5
 r1
 !s85 0
 31
-R11
+R12
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv|
 !i113 1

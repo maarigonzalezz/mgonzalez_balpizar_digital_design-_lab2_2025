@@ -1,5 +1,5 @@
 Flow report for Arithmetic_Logic_Unit
-Sat Sep 06 23:26:05 2025
+Sun Sep 07 00:33:10 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Sat Sep 06 23:26:05 2025       ;
+; Flow Status                 ; Successful - Sun Sep 07 00:33:10 2025       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; Arithmetic_Logic_Unit                       ;
 ; Top-level Entity Name       ; ALU                                         ;
@@ -63,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+-----------------------+
 ; Option            ; Setting               ;
 +-------------------+-----------------------+
-; Start date & time ; 09/06/2025 23:26:00   ;
+; Start date & time ; 09/07/2025 00:33:05   ;
 ; Main task         ; Compilation           ;
 ; Revision Name     ; Arithmetic_Logic_Unit ;
 +-------------------+-----------------------+
@@ -74,7 +74,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
 ; Assignment Name                      ; Value                                  ; Default Value         ; Entity Name ; Section Id                        ;
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                ; 963350053486.175722276009556           ; --                    ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                ; 963350053486.175722678516280           ; --                    ; --          ; --                                ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --                    ; --          ; ALU_tb                            ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --                    ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --                    ; --          ; eda_board_design_boundary_scan    ;
@@ -107,8 +107,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:05     ; 1.0                     ; 4772 MB             ; 00:00:12                           ;
-; Total                  ; 00:00:05     ; --                      ; --                  ; 00:00:12                           ;
+; Analysis & Elaboration ; 00:00:06     ; 1.0                     ; 4776 MB             ; 00:00:12                           ;
+; Total                  ; 00:00:06     ; --                      ; --                  ; 00:00:12                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
