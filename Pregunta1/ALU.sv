@@ -6,9 +6,7 @@ module ALU #(parameter n = 4)(
 	// Resultados para cada operación
 	logic [2*n-1:0] mult_result;
 	logic [n-1:0] sum_result, rest_result, div_result, mod_result;
-	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;
-	logic [n-1:0] remainder;
-	
+	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;	
 	
 	// Instancia de Suma
 	    nbit_adder #(
@@ -68,87 +66,52 @@ nbit_multiplier #(
             4'b0101: result = sleft_result;     		// Shift left
             4'b0110: result = sright_result;    		// Shift right
             4'b0111: result = mult_result[n-1:0];   	// Multiplicación (truncada a n bits)
-            // División
-            4'b0111: begin
-                if (num2 != 0) begin
-                    result   = num1 / num2;  // cociente
-                    remainder = num1 % num2; // residuo
-                end else begin
-                    result   = {n{1'b0}};    // división por 0 → resultado 0
-                    remainder = {n{1'b0}};
-                end
-            end
+            4'b0111: result = div_result;					// Division
             4'b1001: result = mod_result;       		// Módulo
             default: result = {n{1'b0}};
         endcase
     end
 
+	 
     // ---------------------- Flags ----------------------
     always_comb begin
-        // Zero
+        // Zero flag
         Z = (result == 0);
 
-        // Negative (bit más significativo)
-        N = result[n-1];
+        // Negative flag (solo en resta)
+        if (op == 4'b0001)
+            N = result[n-1];
+        else
+            N = 0;
 
-        // Carry / Borrow / Overflow
+        // Carry flag
         case(op)
-		  
-            // SUMA
-            4'b0000: begin
-                C = carry_sum; // carry de la suma
-                V = (num1[n-1] == num2[n-1]) && (result[n-1] != num1[n-1]);
-            end
-
-            // RESTA
-            4'b0001: begin
-                C = borrow_final; // borrow de la resta
-                V = (num1[n-1] != num2[n-1]) && (result[n-1] != num1[n-1]);
-            end
-
-            // AND
-            4'b0010: begin
-                C = 0;
-                V = 0;
-            end
-
-            // OR
-            4'b0011: begin
-                C = 0;
-                V = 0;
-            end
-
-            // XOR
-            4'b0100: begin
-                C = 0;
-                V = 0;
-            end
-
-            // NOT
-            4'b0101: begin
-                C = 0;
-                V = 0;
-            end
-
-            // MULTIPLICACIÓN
-            4'b0110: begin
-                // Si hay bits en mul_result[2N-1:N] → overflow en N bits
-                C = |mult_result[2*n-1:n];
-                V = C; // overflow y carry equivalentes en unsigned
-            end
-
-            // DIVISIÓN
-            4'b0111: begin
-                // Si hay residuo → carry como indicador
-                C = (remainder != 0);
-                V = 0; // no hay overflow en división positiva
-            end
-
-            default: begin
-                C = 0;
-                V = 0;
-            end
+				// SUMA
+				// El carry es el Cout del ultimo bit
+            4'b0000: C = carry_sum;
+				// RESTA
+				// Se toma como carry el borrow final
+            4'b0001: C = borrow_final; 
+				// SHIFT LEFT
+				// Se toma como carry el bit perdido 
+            4'b0101: C = num1[n-1];
+				// SHIFT RIGHT
+				// Se toma como carry el bit perdido 
+            4'b0110: C = num1[0];
+				// MULTIPLICACIÓN (truncamiento)
+				// Se trunca el numero a N bits del resultado, si alguno de sus bits es 1
+				// Siginifca que la multiplicacion excedio los N bits y hubo carry
+            4'b0111: C = |mult_result[2*n-1:n];
+				// DIVISIÓN
+				// Se toma como catty el residuo
+            4'b1000: C = (num2 != 0) ? (num1 % num2 != 0) : 0;
+				// AND, OR, XOR, MÓDULO
+				// No hay carry
+            default: C = 0;                                
         endcase
+
+        // El overflow no existe pues las entradas son siempre positivas o "unsigned"
+        V = 0;
     end
 	
 endmodule

@@ -11,24 +11,24 @@ cModel Technology
 Z0 dC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/simulation/modelsim
 vALU
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1757228261
+Z2 !s110 1757229356
 !i10b 1
-!s100 b92[nPkV__VZDcLDfOV<V1
+!s100 [0QkEg2J4igE`RM;FmKOG0
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IHhcaY8oAT;`8dIP1XNJ1o1
+I;zNi]=8N=DmQg7hHnYL]e2
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1757228246
+w1757229332
 8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv
 FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv
 !i122 0
-L0 1 154
+L0 1 113
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1757228261.000000
+Z6 !s108 1757229356.000000
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv|
 !i113 1
@@ -142,7 +142,7 @@ R8
 R9
 vnbit_multiplier
 R1
-Z11 !s110 1757228262
+R2
 !i10b 1
 !s100 K=n9GRUn]Ud[h<P@?@z9f1
 R3
@@ -194,7 +194,7 @@ R8
 R9
 vtb_ALU
 R1
-R11
+!s110 1757229357
 !i10b 1
 !s100 _WMfCGj0_Jl9<NN::_hll3
 R3
@@ -211,7 +211,7 @@ R5
 r1
 !s85 0
 31
-!s108 1757228262.000000
+!s108 1757229357.000000
 !s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv|
 !i113 1
