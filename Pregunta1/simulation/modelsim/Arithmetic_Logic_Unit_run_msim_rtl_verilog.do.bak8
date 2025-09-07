@@ -10,8 +10,6 @@ vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Talle
 vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv}
 vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv}
 vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv}
-vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv}
-vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv}
 
 vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv}
 

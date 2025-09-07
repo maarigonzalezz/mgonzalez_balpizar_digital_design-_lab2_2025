@@ -4,7 +4,8 @@ module ALU #(parameter n = 4)(
 				output logic [n-1:0] result,
 				output logic Z, N, V, C);
 	// Resultados para cada operación
-	logic [n-1:0] sum_result, rest_result, mult_result, div_result, mod_result;
+	logic [2*n-1:0] mult_result;
+	logic [n-1:0] sum_result, rest_result, div_result, mod_result;
 	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;
 	
 	
@@ -34,6 +35,13 @@ module ALU #(parameter n = 4)(
 	
 	// Instancia de Multiplicación
 	
+nbit_multiplier #(
+    .N(n)                   // Tamaño de los operandos
+) MULT_INST (
+    .A(num1),               // Multiplicando
+    .B(num2),               // Multiplicador
+    .Product(mult_result)   // Resultado de la multiplicación
+);
 	
 	
 	// Operaciones division, modulo, and, or, xor, shift left y shift right
@@ -51,16 +59,16 @@ module ALU #(parameter n = 4)(
 	// Selección de resultado según op
     always_comb begin
         case(op)
-            4'b0000: result = sum_result;       // Suma
-            4'b0001: result = rest_result;      // Resta
-            4'b0010: result = and_result;       // AND
-            4'b0011: result = or_result;        // OR
-            4'b0100: result = xor_result;       // XOR
-            4'b0101: result = sleft_result;     // Shift left
-            4'b0110: result = sright_result;    // Shift right
-            4'b0111: result = mult_result;      // Multiplicación
-            4'b1000: result = div_result;       // División
-            4'b1001: result = mod_result;       // Módulo
+            4'b0000: result = sum_result;       		// Suma
+            4'b0001: result = rest_result;      		// Resta
+            4'b0010: result = and_result;       		// AND
+            4'b0011: result = or_result;        		// OR
+            4'b0100: result = xor_result;       		// XOR
+            4'b0101: result = sleft_result;     		// Shift left
+            4'b0110: result = sright_result;    		// Shift right
+            4'b0111: result = mult_result[n-1:0];   	// Multiplicación (truncada a n bits)
+            4'b1000: result = div_result;       		// División
+            4'b1001: result = mod_result;       		// Módulo
             default: result = {n{1'b0}};
         endcase
     end
