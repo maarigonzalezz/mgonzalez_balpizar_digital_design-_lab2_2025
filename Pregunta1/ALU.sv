@@ -9,9 +9,27 @@ module ALU #(parameter n = 4)(
 	
 	
 	// Instancia de Suma
+	    nbit_adder #(
+        .N(n)
+    ) SUM_INST (
+        .A   (num1),
+        .B   (num2),
+        .Cin (1'b0),
+        .Sum (sum_result),
+        .Cout(carry_sum)
+    );
 	
 	
 	// Instancia de Resta
+		
+	logic borrow_final;  // Borrow final de la resta
+
+	nbit_subtractor #(.n(n)) u_nbit_sub(
+		 .A(num1),          // Minuendo
+		 .B(num2),          // Sustraendo
+		 .D(rest_result),   // Resultado de la resta
+		 .Bout(borrow_final) // Borrow final
+	);
 	
 	
 	// Instancia de Multiplicación
@@ -28,8 +46,6 @@ module ALU #(parameter n = 4)(
    assign xor_result = num1 ^ num2;
    assign sleft_result = num1 << num2[$clog2(n)-1:0];  // Limitamos el shift a un valor según n
    assign sright_result = num1 >> num2[$clog2(n)-1:0];
-	
-	
 	
 	
 	
