@@ -16,7 +16,7 @@ module nbit_adder #(
     genvar i;
     generate
         for (i = 0; i < N; i++) begin : adder_loop
-            full_adder_1bit FA_inst (
+            full_adder FA_inst (
                 .A   (A[i]),
                 .B   (B[i]),
                 .Cin (carry[i]),
