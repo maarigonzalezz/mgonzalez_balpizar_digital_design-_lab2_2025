@@ -8,6 +8,7 @@ module ALU #(parameter n = 4)(
 	logic [2*n-1:0] mult_result;
 	logic [n-1:0] sum_result, rest_result, div_result, mod_result;
 	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;
+	logic V_resta;
 	
 	// Instancia de Suma
 	    nbit_adder #(
@@ -29,7 +30,8 @@ module ALU #(parameter n = 4)(
 		 .A(num1),          // Minuendo
 		 .B(num2),          // Sustraendo
 		 .D(rest_result),   // Resultado de la resta
-		 .Bout(borrow_final) // Borrow final
+		 .Bout(borrow_final), // Borrow final
+		 .V(V_resta)
 	);
 	
 	
@@ -79,6 +81,8 @@ module ALU #(parameter n = 4)(
 			.seg(seg));
 	 
     // ---------------------- Flags ----------------------
+	 assign V = (op == 4'b0001) & (num1 - num2 < -8);
+	 
     always_comb begin
         // Zero flag
         Z = (result == 0);
@@ -114,10 +118,9 @@ module ALU #(parameter n = 4)(
 				// No hay carry
             default: C = 0;                                
         endcase
-
-        // El overflow no existe pues las entradas son siempre positivas o "unsigned"
-        V = 0;
     end
+	 
+	 
 	
 endmodule
 

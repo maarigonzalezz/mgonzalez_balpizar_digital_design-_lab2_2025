@@ -3,8 +3,7 @@ module nbit_subtractor #(parameter n = 4)(
     input  logic [n-1:0] A,       // Minuendo
     input  logic [n-1:0] B,       // Sustraendo
     output logic [n-1:0] D,       // Resultado de la resta
-    output logic Bout,             // Préstamo final
-	 output logic V
+    output logic Bout             // Préstamo final
 );
 
     logic [n:0] borrow;           // Cadena de préstamos
@@ -24,8 +23,4 @@ module nbit_subtractor #(parameter n = 4)(
     endgenerate
 
     assign Bout = borrow[n];       // Borrow final
-	 
-	 // Overflow
-    assign V = (A[n-1] ^ B[n-1]) & (A[n-1] ^ D[n-1]);
-	 
 endmodule
