@@ -1,5 +1,5 @@
 Flow report for Arithmetic_Logic_Unit
-Sun Sep 07 01:22:25 2025
+Sun Sep 07 18:02:19 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Sun Sep 07 01:22:25 2025       ;
+; Flow Status                 ; Successful - Sun Sep 07 18:02:19 2025       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; Arithmetic_Logic_Unit                       ;
 ; Top-level Entity Name       ; ALU                                         ;
@@ -63,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+-----------------------+
 ; Option            ; Setting               ;
 +-------------------+-----------------------+
-; Start date & time ; 09/07/2025 01:22:20   ;
+; Start date & time ; 09/07/2025 18:02:13   ;
 ; Main task         ; Compilation           ;
 ; Revision Name     ; Arithmetic_Logic_Unit ;
 +-------------------+-----------------------+
@@ -74,7 +74,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
 ; Assignment Name                      ; Value                                  ; Default Value         ; Entity Name ; Section Id                        ;
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                ; 963350053486.175722974001960           ; --                    ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                ; 237785193706138.175728973337132        ; --                    ; --          ; --                                ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --                    ; --          ; ALU_tb                            ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --                    ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --                    ; --          ; eda_board_design_boundary_scan    ;
@@ -85,7 +85,7 @@ https://fpgasoftware.intel.com/eula.
 ; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (SystemVerilog)        ; <None>                ; --          ; --                                ;
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --                    ; --          ; eda_simulation                    ;
 ; EDA_TEST_BENCH_FILE                  ; ALU_tb.sv                              ; --                    ; --          ; ALU_tb                            ;
-; EDA_TEST_BENCH_MODULE_NAME           ; ALU                                    ; --                    ; --          ; ALU_tb                            ;
+; EDA_TEST_BENCH_MODULE_NAME           ; ALU_tb                                 ; --                    ; --          ; ALU_tb                            ;
 ; EDA_TEST_BENCH_NAME                  ; ALU_tb                                 ; --                    ; --          ; eda_simulation                    ;
 ; EDA_TIME_SCALE                       ; 1 ps                                   ; --                    ; --          ; eda_simulation                    ;
 ; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --                    ; --          ; --                                ;
@@ -107,8 +107,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:06     ; 1.0                     ; 4776 MB             ; 00:00:12                           ;
-; Total                  ; 00:00:06     ; --                      ; --                  ; 00:00:12                           ;
+; Analysis & Elaboration ; 00:00:06     ; 1.0                     ; 4773 MB             ; 00:00:17                           ;
+; Total                  ; 00:00:06     ; --                      ; --                  ; 00:00:17                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -117,7 +117,7 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+------------------+------------+------------+----------------+
 ; Module Name            ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +------------------------+------------------+------------+------------+----------------+
-; Analysis & Elaboration ; DESKTOP-2FN45VG  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Elaboration ; MaariGonzalezz   ; Windows 10 ; 10.0       ; x86_64         ;
 +------------------------+------------------+------------+------------+----------------+
 
 

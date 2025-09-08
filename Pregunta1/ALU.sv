@@ -2,7 +2,8 @@ module ALU #(parameter n = 4)(
 				input logic [3:0] op,
 				input logic [n-1: 0] num1, num2,
 				output logic [n-1:0] result,
-				output logic Z, N, V, C);
+				output logic Z, N, V, C,
+				output logic [6:0] seg);
 	// Resultados para cada operación
 	logic [2*n-1:0] mult_result;
 	logic [n-1:0] sum_result, rest_result, div_result, mod_result;
@@ -34,13 +35,13 @@ module ALU #(parameter n = 4)(
 	
 	// Instancia de Multiplicación
 	
-nbit_multiplier #(
-    .N(n)                   // Tamaño de los operandos
-) MULT_INST (
-    .A(num1),               // Multiplicando
-    .B(num2),               // Multiplicador
-    .Product(mult_result)   // Resultado de la multiplicación
-);
+	nbit_multiplier #(
+		 .N(n)                   // Tamaño de los operandos
+	) MULT_INST (
+		 .A(num1),               // Multiplicando
+		 .B(num2),               // Multiplicador
+		 .Product(mult_result)   // Resultado de la multiplicación
+	);
 	
 	
 	// Operaciones division, modulo, and, or, xor, shift left y shift right
@@ -66,12 +67,16 @@ nbit_multiplier #(
             4'b0101: result = sleft_result;     		// Shift left
             4'b0110: result = sright_result;    		// Shift right
             4'b0111: result = mult_result[n-1:0];   	// Multiplicación (truncada a n bits)
-            4'b0111: result = div_result;					// Division
+            4'b1000: result = div_result;					// Division
             4'b1001: result = mod_result;       		// Módulo
             default: result = {n{1'b0}};
         endcase
     end
-
+	
+	// Instancia del 7 segmentos
+	BinTo7Seg display_unidades (
+			.bin(result), 
+			.seg(seg));
 	 
     // ---------------------- Flags ----------------------
     always_comb begin
