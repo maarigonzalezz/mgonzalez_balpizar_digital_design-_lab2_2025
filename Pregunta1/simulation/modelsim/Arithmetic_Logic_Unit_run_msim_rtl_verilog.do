@@ -13,6 +13,7 @@ vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpiz
 vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv}
 vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv}
 vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv}
+vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv}
 
 vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv}
 

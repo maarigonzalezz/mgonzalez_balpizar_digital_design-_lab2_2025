@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
 
-// DATE "09/06/2025 23:21:16"
+// DATE "09/07/2025 19:20:00"
 
 // 
 // Device: Altera 5CSXFC6D6F31C6 Package FBGA896
@@ -29,7 +29,7 @@
 
 `timescale 1 ps/ 1 ps
 
-module ALU (
+module Top_ALU (
 	op,
 	num1,
 	num2,
@@ -37,7 +37,8 @@ module ALU (
 	Z,
 	N,
 	V,
-	C);
+	C,
+	seg);
 input 	[3:0] op;
 input 	[3:0] num1;
 input 	[3:0] num2;
@@ -46,28 +47,36 @@ output 	Z;
 output 	N;
 output 	V;
 output 	C;
+output 	[6:0] seg;
 
 // Design Ports Information
-// op[0]	=>  Location: PIN_E13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// op[1]	=>  Location: PIN_AB17,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// op[2]	=>  Location: PIN_AD10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// op[3]	=>  Location: PIN_W16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num1[0]	=>  Location: PIN_AE26,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num1[1]	=>  Location: PIN_AC25,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num1[2]	=>  Location: PIN_AF5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num1[3]	=>  Location: PIN_K7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num2[0]	=>  Location: PIN_AK8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num2[1]	=>  Location: PIN_AF15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num2[2]	=>  Location: PIN_AH22,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// num2[3]	=>  Location: PIN_AJ24,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// result[0]	=>  Location: PIN_AF14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// result[1]	=>  Location: PIN_A5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// result[2]	=>  Location: PIN_AG7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// result[3]	=>  Location: PIN_AH25,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Z	=>  Location: PIN_Y24,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// N	=>  Location: PIN_A9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// V	=>  Location: PIN_AF8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// C	=>  Location: PIN_J12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// result[0]	=>  Location: PIN_W25,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// result[1]	=>  Location: PIN_AH30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// result[2]	=>  Location: PIN_AG30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// result[3]	=>  Location: PIN_AC27,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// Z	=>  Location: PIN_AA24,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// N	=>  Location: PIN_AB23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// V	=>  Location: PIN_AD24,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// C	=>  Location: PIN_AC23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[0]	=>  Location: PIN_W17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[1]	=>  Location: PIN_V18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[2]	=>  Location: PIN_AG17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[3]	=>  Location: PIN_AG16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[4]	=>  Location: PIN_AH17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[5]	=>  Location: PIN_AG18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// seg[6]	=>  Location: PIN_AH18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// op[0]	=>  Location: PIN_AJ4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num1[0]	=>  Location: PIN_AC28,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num2[0]	=>  Location: PIN_AB30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num2[3]	=>  Location: PIN_AC30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num2[1]	=>  Location: PIN_Y27,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num2[2]	=>  Location: PIN_AB28,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// op[1]	=>  Location: PIN_AK4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// op[2]	=>  Location: PIN_AA14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// op[3]	=>  Location: PIN_AA15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num1[2]	=>  Location: PIN_AC29,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num1[1]	=>  Location: PIN_AD30,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// num1[3]	=>  Location: PIN_AA30,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 wire gnd;
@@ -81,24 +90,171 @@ assign unknown = 1'bx;
 tri1 devclrn;
 tri1 devpor;
 tri1 devoe;
-wire \op[0]~input_o ;
+wire \~QUARTUS_CREATED_GND~I_combout ;
 wire \op[1]~input_o ;
+wire \num2[0]~input_o ;
+wire \num2[3]~input_o ;
+wire \num2[2]~input_o ;
+wire \num2[1]~input_o ;
+wire \FPGA_ALU|Equal0~0_combout ;
 wire \op[2]~input_o ;
 wire \op[3]~input_o ;
-wire \num1[0]~input_o ;
-wire \num1[1]~input_o ;
-wire \num1[2]~input_o ;
+wire \FPGA_ALU|Mux4~0_combout ;
+wire \op[0]~input_o ;
 wire \num1[3]~input_o ;
-wire \num2[0]~input_o ;
-wire \num2[1]~input_o ;
-wire \num2[2]~input_o ;
-wire \num2[3]~input_o ;
-wire \~QUARTUS_CREATED_GND~I_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~2 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~3 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout ;
+wire \num1[2]~input_o ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~6 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~7 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~10 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~11 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout ;
+wire \num1[1]~input_o ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~6 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~7 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~10 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~11 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~14 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~15 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout ;
+wire \num1[0]~input_o ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22_cout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~6 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~10 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~14 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~18 ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~6 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~7 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~10 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~11 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~6 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~7 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~14 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~15 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~10 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~11 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~6 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~7 ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0_combout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2_combout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3_combout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13_sumout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22_cout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18_cout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14_cout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10_cout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6_cout ;
+wire \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1_sumout ;
+wire \FPGA_ALU|Mux3~0_combout ;
+wire \FPGA_ALU|Mux3~1_combout ;
+wire \FPGA_ALU|ShiftRight0~0_combout ;
+wire \FPGA_ALU|Mux3~2_combout ;
+wire \FPGA_ALU|Mux3~3_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout ;
+wire \FPGA_ALU|ShiftLeft0~0_combout ;
+wire \FPGA_ALU|ShiftRight0~1_combout ;
+wire \FPGA_ALU|MULT_INST|Add1~1_sumout ;
+wire \FPGA_ALU|Mux2~4_combout ;
+wire \FPGA_ALU|Mux2~0_combout ;
+wire \FPGA_ALU|Mux2~1_combout ;
+wire \FPGA_ALU|Mux2~2_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout ;
+wire \FPGA_ALU|Mux2~3_combout ;
+wire \FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ;
+wire \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ;
+wire \FPGA_ALU|Mux1~0_combout ;
+wire \FPGA_ALU|ShiftLeft0~1_combout ;
+wire \FPGA_ALU|ShiftRight0~2_combout ;
+wire \FPGA_ALU|MULT_INST|Add1~29_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~2 ;
+wire \FPGA_ALU|MULT_INST|Add1~5_sumout ;
+wire \FPGA_ALU|Mux1~6_combout ;
+wire \FPGA_ALU|Mux1~1_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout ;
+wire \FPGA_ALU|Mux1~2_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout ;
+wire \FPGA_ALU|ShiftLeft0~2_combout ;
+wire \FPGA_ALU|ShiftRight0~3_combout ;
+wire \FPGA_ALU|MULT_INST|Add0~1_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~30 ;
+wire \FPGA_ALU|MULT_INST|Add1~33_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~6 ;
+wire \FPGA_ALU|MULT_INST|Add1~9_sumout ;
+wire \FPGA_ALU|Mux0~6_combout ;
+wire \FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ;
+wire \FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout ;
+wire \FPGA_ALU|Mux0~0_combout ;
+wire \FPGA_ALU|Mux0~1_combout ;
+wire \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout ;
+wire \FPGA_ALU|Mux0~2_combout ;
+wire \FPGA_ALU|Equal1~0_combout ;
+wire \FPGA_ALU|N~0_combout ;
+wire \FPGA_ALU|Equal3~0_combout ;
+wire \FPGA_ALU|Mux4~2_combout ;
+wire \FPGA_ALU|MULT_INST|Add0~2 ;
+wire \FPGA_ALU|MULT_INST|Add0~6 ;
+wire \FPGA_ALU|MULT_INST|Add0~10 ;
+wire \FPGA_ALU|MULT_INST|Add0~14 ;
+wire \FPGA_ALU|MULT_INST|Add0~17_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~34 ;
+wire \FPGA_ALU|MULT_INST|Add1~38 ;
+wire \FPGA_ALU|MULT_INST|Add1~42 ;
+wire \FPGA_ALU|MULT_INST|Add1~45_sumout ;
+wire \FPGA_ALU|MULT_INST|Add0~13_sumout ;
+wire \FPGA_ALU|MULT_INST|Add0~9_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~41_sumout ;
+wire \FPGA_ALU|MULT_INST|Add0~5_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~37_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~10 ;
+wire \FPGA_ALU|MULT_INST|Add1~14 ;
+wire \FPGA_ALU|MULT_INST|Add1~18 ;
+wire \FPGA_ALU|MULT_INST|Add1~22 ;
+wire \FPGA_ALU|MULT_INST|Add1~25_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~17_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~21_sumout ;
+wire \FPGA_ALU|MULT_INST|Add1~13_sumout ;
+wire \FPGA_ALU|Mux4~1_combout ;
+wire \FPGA_ALU|Mux4~3_combout ;
+wire \FPGA_ALU|Equal3~1_combout ;
+wire \FPGA_ALU|Mux4~4_combout ;
+wire \FPGA_ALU|display_unidades|WideOr6~0_combout ;
+wire \FPGA_ALU|display_unidades|WideOr5~0_combout ;
+wire \FPGA_ALU|display_unidades|WideOr4~0_combout ;
+wire \FPGA_ALU|display_unidades|WideOr3~0_combout ;
+wire \FPGA_ALU|display_unidades|WideOr2~0_combout ;
+wire \FPGA_ALU|display_unidades|WideOr1~0_combout ;
+wire \FPGA_ALU|display_unidades|WideOr0~0_combout ;
+wire [19:0] \FPGA_ALU|Div0|auto_generated|divider|divider|selnose ;
+wire [19:0] \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose ;
 
 
-// Location: IOOBUF_X32_Y0_N2
+// Location: IOOBUF_X89_Y20_N45
 cyclonev_io_obuf \result[0]~output (
-	.i(gnd),
+	.i(\FPGA_ALU|Mux3~3_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -112,9 +268,9 @@ defparam \result[0]~output .open_drain_output = "false";
 defparam \result[0]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X26_Y81_N93
+// Location: IOOBUF_X89_Y16_N39
 cyclonev_io_obuf \result[1]~output (
-	.i(gnd),
+	.i(\FPGA_ALU|Mux2~3_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -128,9 +284,9 @@ defparam \result[1]~output .open_drain_output = "false";
 defparam \result[1]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X10_Y0_N93
+// Location: IOOBUF_X89_Y16_N56
 cyclonev_io_obuf \result[2]~output (
-	.i(gnd),
+	.i(\FPGA_ALU|Mux1~2_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -144,9 +300,9 @@ defparam \result[2]~output .open_drain_output = "false";
 defparam \result[2]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X78_Y0_N53
+// Location: IOOBUF_X89_Y16_N22
 cyclonev_io_obuf \result[3]~output (
-	.i(gnd),
+	.i(\FPGA_ALU|Mux0~2_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -160,9 +316,9 @@ defparam \result[3]~output .open_drain_output = "false";
 defparam \result[3]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X89_Y13_N22
+// Location: IOOBUF_X89_Y11_N45
 cyclonev_io_obuf \Z~output (
-	.i(gnd),
+	.i(\FPGA_ALU|Equal1~0_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -176,9 +332,9 @@ defparam \Z~output .open_drain_output = "false";
 defparam \Z~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X34_Y81_N76
+// Location: IOOBUF_X89_Y9_N22
 cyclonev_io_obuf \N~output (
-	.i(gnd),
+	.i(\FPGA_ALU|N~0_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -192,7 +348,7 @@ defparam \N~output .open_drain_output = "false";
 defparam \N~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X10_Y0_N76
+// Location: IOOBUF_X88_Y0_N37
 cyclonev_io_obuf \V~output (
 	.i(gnd),
 	.oe(vcc),
@@ -208,9 +364,9 @@ defparam \V~output .open_drain_output = "false";
 defparam \V~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X12_Y81_N19
+// Location: IOOBUF_X86_Y0_N19
 cyclonev_io_obuf \C~output (
-	.i(gnd),
+	.i(\FPGA_ALU|Mux4~4_combout ),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -224,18 +380,119 @@ defparam \C~output .open_drain_output = "false";
 defparam \C~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOIBUF_X26_Y81_N58
-cyclonev_io_ibuf \op[0]~input (
-	.i(op[0]),
-	.ibar(gnd),
+// Location: IOOBUF_X60_Y0_N19
+cyclonev_io_obuf \seg[0]~output (
+	.i(\FPGA_ALU|display_unidades|WideOr6~0_combout ),
+	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
-	.o(\op[0]~input_o ));
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[0]),
+	.obar());
 // synopsys translate_off
-defparam \op[0]~input .bus_hold = "false";
-defparam \op[0]~input .simulate_z_as = "z";
+defparam \seg[0]~output .bus_hold = "false";
+defparam \seg[0]~output .open_drain_output = "false";
+defparam \seg[0]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOIBUF_X56_Y0_N18
+// Location: IOOBUF_X80_Y0_N2
+cyclonev_io_obuf \seg[1]~output (
+	.i(\FPGA_ALU|display_unidades|WideOr5~0_combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[1]),
+	.obar());
+// synopsys translate_off
+defparam \seg[1]~output .bus_hold = "false";
+defparam \seg[1]~output .open_drain_output = "false";
+defparam \seg[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X50_Y0_N93
+cyclonev_io_obuf \seg[2]~output (
+	.i(\FPGA_ALU|display_unidades|WideOr4~0_combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[2]),
+	.obar());
+// synopsys translate_off
+defparam \seg[2]~output .bus_hold = "false";
+defparam \seg[2]~output .open_drain_output = "false";
+defparam \seg[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X50_Y0_N76
+cyclonev_io_obuf \seg[3]~output (
+	.i(\FPGA_ALU|display_unidades|WideOr3~0_combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[3]),
+	.obar());
+// synopsys translate_off
+defparam \seg[3]~output .bus_hold = "false";
+defparam \seg[3]~output .open_drain_output = "false";
+defparam \seg[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X56_Y0_N36
+cyclonev_io_obuf \seg[4]~output (
+	.i(\FPGA_ALU|display_unidades|WideOr2~0_combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[4]),
+	.obar());
+// synopsys translate_off
+defparam \seg[4]~output .bus_hold = "false";
+defparam \seg[4]~output .open_drain_output = "false";
+defparam \seg[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X58_Y0_N76
+cyclonev_io_obuf \seg[5]~output (
+	.i(\FPGA_ALU|display_unidades|WideOr1~0_combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[5]),
+	.obar());
+// synopsys translate_off
+defparam \seg[5]~output .bus_hold = "false";
+defparam \seg[5]~output .open_drain_output = "false";
+defparam \seg[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X56_Y0_N53
+cyclonev_io_obuf \seg[6]~output (
+	.i(!\FPGA_ALU|display_unidades|WideOr0~0_combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(seg[6]),
+	.obar());
+// synopsys translate_off
+defparam \seg[6]~output .bus_hold = "false";
+defparam \seg[6]~output .open_drain_output = "false";
+defparam \seg[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X22_Y0_N52
 cyclonev_io_ibuf \op[1]~input (
 	.i(op[1]),
 	.ibar(gnd),
@@ -246,73 +503,7 @@ defparam \op[1]~input .bus_hold = "false";
 defparam \op[1]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X4_Y0_N18
-cyclonev_io_ibuf \op[2]~input (
-	.i(op[2]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\op[2]~input_o ));
-// synopsys translate_off
-defparam \op[2]~input .bus_hold = "false";
-defparam \op[2]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X52_Y0_N18
-cyclonev_io_ibuf \op[3]~input (
-	.i(op[3]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\op[3]~input_o ));
-// synopsys translate_off
-defparam \op[3]~input .bus_hold = "false";
-defparam \op[3]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X89_Y8_N38
-cyclonev_io_ibuf \num1[0]~input (
-	.i(num1[0]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\num1[0]~input_o ));
-// synopsys translate_off
-defparam \num1[0]~input .bus_hold = "false";
-defparam \num1[0]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X89_Y4_N61
-cyclonev_io_ibuf \num1[1]~input (
-	.i(num1[1]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\num1[1]~input_o ));
-// synopsys translate_off
-defparam \num1[1]~input .bus_hold = "false";
-defparam \num1[1]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X8_Y0_N18
-cyclonev_io_ibuf \num1[2]~input (
-	.i(num1[2]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\num1[2]~input_o ));
-// synopsys translate_off
-defparam \num1[2]~input .bus_hold = "false";
-defparam \num1[2]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X8_Y81_N1
-cyclonev_io_ibuf \num1[3]~input (
-	.i(num1[3]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\num1[3]~input_o ));
-// synopsys translate_off
-defparam \num1[3]~input .bus_hold = "false";
-defparam \num1[3]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X28_Y0_N52
+// Location: IOIBUF_X89_Y21_N4
 cyclonev_io_ibuf \num2[0]~input (
 	.i(num2[0]),
 	.ibar(gnd),
@@ -323,29 +514,7 @@ defparam \num2[0]~input .bus_hold = "false";
 defparam \num2[0]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X32_Y0_N18
-cyclonev_io_ibuf \num2[1]~input (
-	.i(num2[1]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\num2[1]~input_o ));
-// synopsys translate_off
-defparam \num2[1]~input .bus_hold = "false";
-defparam \num2[1]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X66_Y0_N92
-cyclonev_io_ibuf \num2[2]~input (
-	.i(num2[2]),
-	.ibar(gnd),
-	.dynamicterminationcontrol(gnd),
-	.o(\num2[2]~input_o ));
-// synopsys translate_off
-defparam \num2[2]~input .bus_hold = "false";
-defparam \num2[2]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: IOIBUF_X74_Y0_N75
+// Location: IOIBUF_X89_Y25_N55
 cyclonev_io_ibuf \num2[3]~input (
 	.i(num2[3]),
 	.ibar(gnd),
@@ -356,7 +525,2872 @@ defparam \num2[3]~input .bus_hold = "false";
 defparam \num2[3]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: LABCELL_X23_Y20_N0
+// Location: IOIBUF_X89_Y21_N38
+cyclonev_io_ibuf \num2[2]~input (
+	.i(num2[2]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\num2[2]~input_o ));
+// synopsys translate_off
+defparam \num2[2]~input .bus_hold = "false";
+defparam \num2[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X89_Y25_N21
+cyclonev_io_ibuf \num2[1]~input (
+	.i(num2[1]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\num2[1]~input_o ));
+// synopsys translate_off
+defparam \num2[1]~input .bus_hold = "false";
+defparam \num2[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N45
+cyclonev_lcell_comb \FPGA_ALU|Equal0~0 (
+// Equation(s):
+// \FPGA_ALU|Equal0~0_combout  = (!\num2[3]~input_o  & (!\num2[2]~input_o  & !\num2[1]~input_o ))
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\num2[1]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Equal0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Equal0~0 .extended_lut = "off";
+defparam \FPGA_ALU|Equal0~0 .lut_mask = 64'h8080808080808080;
+defparam \FPGA_ALU|Equal0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: IOIBUF_X36_Y0_N1
+cyclonev_io_ibuf \op[2]~input (
+	.i(op[2]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\op[2]~input_o ));
+// synopsys translate_off
+defparam \op[2]~input .bus_hold = "false";
+defparam \op[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X36_Y0_N18
+cyclonev_io_ibuf \op[3]~input (
+	.i(op[3]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\op[3]~input_o ));
+// synopsys translate_off
+defparam \op[3]~input .bus_hold = "false";
+defparam \op[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N21
+cyclonev_lcell_comb \FPGA_ALU|Mux4~0 (
+// Equation(s):
+// \FPGA_ALU|Mux4~0_combout  = ( !\op[3]~input_o  & ( (\op[1]~input_o  & (\op[2]~input_o  & ((!\FPGA_ALU|Equal0~0_combout ) # (\num2[0]~input_o )))) ) )
+
+	.dataa(!\op[1]~input_o ),
+	.datab(!\num2[0]~input_o ),
+	.datac(!\FPGA_ALU|Equal0~0_combout ),
+	.datad(!\op[2]~input_o ),
+	.datae(gnd),
+	.dataf(!\op[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux4~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux4~0 .extended_lut = "off";
+defparam \FPGA_ALU|Mux4~0 .lut_mask = 64'h0051005100000000;
+defparam \FPGA_ALU|Mux4~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: IOIBUF_X22_Y0_N35
+cyclonev_io_ibuf \op[0]~input (
+	.i(op[0]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\op[0]~input_o ));
+// synopsys translate_off
+defparam \op[0]~input .bus_hold = "false";
+defparam \op[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X89_Y21_N21
+cyclonev_io_ibuf \num1[3]~input (
+	.i(num1[3]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\num1[3]~input_o ));
+// synopsys translate_off
+defparam \num1[3]~input .bus_hold = "false";
+defparam \num1[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N0
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout  = SUM(( !\num2[0]~input_o  $ (!\num1[3]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~2  = CARRY(( !\num2[0]~input_o  $ (!\num1[3]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~3  = SHARE((!\num2[0]~input_o ) # (\num1[3]~input_o ))
+
+	.dataa(gnd),
+	.datab(!\num2[0]~input_o ),
+	.datac(!\num1[3]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~2 ),
+	.shareout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~3 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1 .lut_mask = 64'h0000CFCF00003C3C;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N3
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout  = SUM(( VCC ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~3  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~2  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~2 ),
+	.sharein(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~3 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N27
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[0] (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] = (!\FPGA_ALU|Equal0~0_combout ) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout ),
+	.datab(!\FPGA_ALU|Equal0~0_combout ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[0] .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[0] .lut_mask = 64'hDDDDDDDDDDDDDDDD;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[0] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: IOIBUF_X89_Y20_N95
+cyclonev_io_ibuf \num1[2]~input (
+	.i(num1[2]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\num1[2]~input_o ));
+// synopsys translate_off
+defparam \num1[2]~input .bus_hold = "false";
+defparam \num1[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N30
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout  = SUM(( !\num1[2]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~6  = CARRY(( !\num1[2]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~7  = SHARE((!\num2[0]~input_o ) # (\num1[2]~input_o ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\num1[2]~input_o ),
+	.datad(!\num2[0]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~6 ),
+	.shareout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~7 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5 .lut_mask = 64'h0000FF0F00000FF0;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N33
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout  = SUM(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout 
+// ))) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] & (\num1[3]~input_o )))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~7  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~6  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~10  = CARRY(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout ))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] & (\num1[3]~input_o )))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~7  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~6  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~11  = SHARE((!\num2[1]~input_o  & ((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout ))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0] & (\num1[3]~input_o )))))
+
+	.dataa(!\num1[3]~input_o ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [0]),
+	.datac(!\num2[1]~input_o ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~6 ),
+	.sharein(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~7 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~10 ),
+	.shareout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~11 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9 .lut_mask = 64'h000010D00000E12D;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N36
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  = SUM(( VCC ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~11  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~10  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~10 ),
+	.sharein(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~11 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N18
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout  = ( !\num2[3]~input_o  & ( (!\num2[2]~input_o  & (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  & 
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout )) ) )
+
+	.dataa(!\num2[2]~input_o ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datac(gnd),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout ),
+	.datae(gnd),
+	.dataf(!\num2[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3 .lut_mask = 64'h0088008800000000;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N24
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout  = ( \num1[3]~input_o  & ( ((!\FPGA_ALU|Equal0~0_combout ) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout )) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout ) ) ) # ( !\num1[3]~input_o  & ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout  & (\FPGA_ALU|Equal0~0_combout  & 
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout )) ) )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[1]~5_sumout ),
+	.datab(!\FPGA_ALU|Equal0~0_combout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_0_result_int[0]~1_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4 .lut_mask = 64'h02020202DFDFDFDF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N42
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[5] (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] = ((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ) # (\num2[2]~input_o )) # (\num2[3]~input_o )
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[5] .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[5] .lut_mask = 64'h7F7F7F7F7F7F7F7F;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[5] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: IOIBUF_X89_Y25_N38
+cyclonev_io_ibuf \num1[1]~input (
+	.i(num1[1]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\num1[1]~input_o ));
+// synopsys translate_off
+defparam \num1[1]~input .bus_hold = "false";
+defparam \num1[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N0
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout  = SUM(( !\num1[1]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~6  = CARRY(( !\num1[1]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~7  = SHARE((!\num2[0]~input_o ) # (\num1[1]~input_o ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\num1[1]~input_o ),
+	.datad(!\num2[0]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~6 ),
+	.shareout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~7 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5 .lut_mask = 64'h0000FF0F00000FF0;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N3
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout  = SUM(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout )) 
+// # (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & ((\num1[2]~input_o ))))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~7  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~6  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~10  = CARRY(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout )) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & ((\num1[2]~input_o ))))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~7  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~6  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~11  = SHARE((!\num2[1]~input_o  & ((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout )) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & ((\num1[2]~input_o ))))))
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5]),
+	.datac(!\num2[1]~input_o ),
+	.datad(!\num1[2]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~6 ),
+	.sharein(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~7 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~10 ),
+	.shareout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~11 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 .lut_mask = 64'h000040700000B487;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N6
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout  = SUM(( !\num2[2]~input_o  $ (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout 
+// )) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ))))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~11  ) + ( 
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~10  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~14  = CARRY(( !\num2[2]~input_o  $ (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout )) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ))))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~11  ) + ( 
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~10  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~15  = SHARE((!\num2[2]~input_o  & ((!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout )) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ))))))
+
+	.dataa(!\num2[2]~input_o ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[1]~9_sumout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [5]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~10 ),
+	.sharein(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~11 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~14 ),
+	.shareout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~15 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13 .lut_mask = 64'h0000220A000099A5;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N9
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  = SUM(( VCC ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~15  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~14  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~14 ),
+	.sharein(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~15 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N54
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[10] (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10] = ( \num2[3]~input_o  ) # ( !\num2[3]~input_o  & ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  ) )
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num2[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[10] .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[10] .lut_mask = 64'h33333333FFFFFFFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|selnose[10] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N21
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout  = ( \num2[3]~input_o  & ( \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout  ) ) # ( !\num2[3]~input_o  & ( 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout  & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ) # (\num2[2]~input_o ))) ) )
+
+	.dataa(!\num2[2]~input_o ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[0]~4_combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num2[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5 .lut_mask = 64'h070707070F0F0F0F;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N51
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout  = ( \num2[2]~input_o  & ( \num1[2]~input_o  ) ) # ( !\num2[2]~input_o  & ( (!\num2[3]~input_o  & ((!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  & 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout )) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  & ((\num1[2]~input_o ))))) # (\num2[3]~input_o  & (((\num1[2]~input_o )))) ) )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[0]~5_sumout ),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datad(!\num1[2]~input_o ),
+	.datae(gnd),
+	.dataf(!\num2[2]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1 .lut_mask = 64'h407F407F00FF00FF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: IOIBUF_X89_Y20_N78
+cyclonev_io_ibuf \num1[0]~input (
+	.i(num1[0]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\num1[0]~input_o ));
+// synopsys translate_off
+defparam \num1[0]~input .bus_hold = "false";
+defparam \num1[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N24
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22_cout  = CARRY(( VCC ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22_cout ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N27
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout  = SUM(( !\num2[0]~input_o  ) + ( \num1[0]~input_o  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22_cout  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~6  = CARRY(( !\num2[0]~input_o  ) + ( \num1[0]~input_o  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22_cout  ))
+
+	.dataa(!\num1[0]~input_o ),
+	.datab(gnd),
+	.datac(!\num2[0]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~22_cout ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5 .lut_mask = 64'h0000AAAA0000F0F0;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N30
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout  = SUM(( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ((!\num2[3]~input_o  & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout 
+// )) # (\num2[3]~input_o  & ((\num1[1]~input_o ))))) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & (((\num1[1]~input_o )))) ) + ( !\num2[1]~input_o  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~6  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~10  = CARRY(( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ((!\num2[3]~input_o  & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout )) 
+// # (\num2[3]~input_o  & ((\num1[1]~input_o ))))) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & (((\num1[1]~input_o )))) ) + ( !\num2[1]~input_o  ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~6  ))
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout ),
+	.datad(!\num1[1]~input_o ),
+	.datae(gnd),
+	.dataf(!\num2[1]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~10 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9 .lut_mask = 64'h000000FF0000087F;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N33
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout  = SUM(( !\num2[2]~input_o  ) + ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ((!\num2[3]~input_o  & 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout )) # (\num2[3]~input_o  & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout ))))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & (((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout )))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~10  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~14  = CARRY(( !\num2[2]~input_o  ) + ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ((!\num2[3]~input_o  & 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout )) # (\num2[3]~input_o  & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout ))))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & (((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout )))) ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~10  ))
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ),
+	.datad(!\num2[2]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~10 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~14 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13 .lut_mask = 64'h0000F7800000FF00;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N36
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout  = SUM(( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10] & (((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout )))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10] & (((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout )) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ))) ) + ( !\num2[3]~input_o  ) + ( 
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~14  ))
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~18  = CARRY(( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10] & (((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout )))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10] & (((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout )) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ))) ) + ( !\num2[3]~input_o  ) + ( 
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~14  ))
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|selnose [10]),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout ),
+	.datae(gnd),
+	.dataf(!\num2[3]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~14 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout ),
+	.cout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~18 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17 .lut_mask = 64'h000000FF0000353F;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N39
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  = SUM(( VCC ) + ( GND ) + ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~18  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~18 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1 .lut_mask = 64'h0000FFFF0000FFFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y19_N30
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout  = SUM(( !\num1[3]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~6  = CARRY(( !\num1[3]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~7  = SHARE((!\num2[0]~input_o ) # (\num1[3]~input_o ))
+
+	.dataa(gnd),
+	.datab(!\num1[3]~input_o ),
+	.datac(!\num2[0]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout ),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~6 ),
+	.shareout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~7 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5 .lut_mask = 64'h0000F3F300003C3C;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y19_N33
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout  = SUM(( VCC ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~7  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~6  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~6 ),
+	.sharein(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~7 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y19_N30
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[0] (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] = ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout  ) # ( !\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout  & ( 
+// !\FPGA_ALU|Equal0~0_combout  ) )
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|Equal0~0_combout ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[0] .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[0] .lut_mask = 64'hCCCCCCCCFFFFFFFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[0] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N30
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout  = SUM(( !\num1[2]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~10  = CARRY(( !\num1[2]~input_o  $ (!\num2[0]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~11  = SHARE((!\num2[0]~input_o ) # (\num1[2]~input_o ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\num1[2]~input_o ),
+	.datad(!\num2[0]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout ),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~10 ),
+	.shareout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~11 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9 .lut_mask = 64'h0000FF0F00000FF0;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N33
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout  = SUM(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] & (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout )) 
+// # (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] & ((\num1[3]~input_o ))))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~11  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~10  ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~6  = CARRY(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] & (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout )) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] & ((\num1[3]~input_o ))))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~11  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~10  ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~7  = SHARE((!\num2[1]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] & (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout )) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0] & ((\num1[3]~input_o ))))))
+
+	.dataa(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout ),
+	.datab(!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0]),
+	.datac(!\num1[3]~input_o ),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~10 ),
+	.sharein(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~11 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout ),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~6 ),
+	.shareout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~7 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5 .lut_mask = 64'h000047000000B847;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N36
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  = SUM(( VCC ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~7  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~6  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~6 ),
+	.sharein(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~7 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N42
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[5] (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] = ((\num2[2]~input_o ) # (\num2[3]~input_o )) # (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout )
+
+	.dataa(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datab(gnd),
+	.datac(!\num2[3]~input_o ),
+	.datad(!\num2[2]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[5] .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[5] .lut_mask = 64'h5FFF5FFF5FFF5FFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[5] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N45
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout  = ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout  & ( ((\FPGA_ALU|Equal0~0_combout  & 
+// !\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout )) # (\num1[3]~input_o ) ) ) # ( !\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout  & ( (\num1[3]~input_o  & ((!\FPGA_ALU|Equal0~0_combout ) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout ))) ) )
+
+	.dataa(gnd),
+	.datab(!\num1[3]~input_o ),
+	.datac(!\FPGA_ALU|Equal0~0_combout ),
+	.datad(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[1]~1_sumout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_0_result_int[0]~5_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1 .lut_mask = 64'h303330333F333F33;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N0
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13_sumout  = SUM(( !\num2[0]~input_o  $ (!\num1[1]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~14  = CARRY(( !\num2[0]~input_o  $ (!\num1[1]~input_o ) ) + ( !VCC ) + ( !VCC ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~15  = SHARE((!\num2[0]~input_o ) # (\num1[1]~input_o ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num1[1]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13_sumout ),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~14 ),
+	.shareout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~15 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13 .lut_mask = 64'h0000F0FF00000FF0;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N3
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout  = SUM(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout 
+// ))) # (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & (\num1[2]~input_o )))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~15  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~14  ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~10  = CARRY(( !\num2[1]~input_o  $ (((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout ))) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & (\num1[2]~input_o )))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~15  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~14  ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~11  = SHARE((!\num2[1]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout ))) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & (\num1[2]~input_o )))))
+
+	.dataa(!\num1[2]~input_o ),
+	.datab(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout ),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5]),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~14 ),
+	.sharein(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~15 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~10 ),
+	.shareout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~11 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 .lut_mask = 64'h000035000000CA35;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N6
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5_sumout  = SUM(( !\num2[2]~input_o  $ (((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout )) 
+// # (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ))))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~11  ) + ( 
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~10  ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~6  = CARRY(( !\num2[2]~input_o  $ (((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout )) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ))))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~11  ) + ( 
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~10  ))
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~7  = SHARE((!\num2[2]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout )) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5] & ((\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ))))))
+
+	.dataa(!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5]),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout ),
+	.datad(!\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~10 ),
+	.sharein(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~11 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5_sumout ),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~6 ),
+	.shareout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~7 ));
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5 .lut_mask = 64'h0000084C0000C693;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N9
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  = SUM(( VCC ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~7  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~6  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~6 ),
+	.sharein(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~7 ),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N51
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[10] (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|selnose [10] = (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ) # (\num2[3]~input_o )
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [10]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[10] .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[10] .lut_mask = 64'h5F5F5F5F5F5F5F5F;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|selnose[10] .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N57
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0_combout  = ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout  & ( (!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  & 
+// (!\num2[2]~input_o  & !\num2[3]~input_o )) ) )
+
+	.dataa(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datab(!\num2[2]~input_o ),
+	.datac(gnd),
+	.datad(!\num2[3]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[1]~5_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0 .lut_mask = 64'h0000000088008800;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N48
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2_combout  = (\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout  & (((\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ) # (\num2[2]~input_o )) # 
+// (\num2[3]~input_o )))
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datad(!\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[0]~1_combout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2 .lut_mask = 64'h007F007F007F007F;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N54
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3_combout  = ( \FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout  & ( ((!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout  & 
+// (!\num2[2]~input_o  & !\num2[3]~input_o ))) # (\num1[2]~input_o ) ) ) # ( !\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout  & ( (\num1[2]~input_o  & (((\num2[3]~input_o ) # (\num2[2]~input_o )) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ))) ) )
+
+	.dataa(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[2]~1_sumout ),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\num2[3]~input_o ),
+	.datad(!\num1[2]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_1_result_int[0]~9_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3 .lut_mask = 64'h007F007F80FF80FF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N12
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22_cout  = CARRY(( VCC ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22_cout ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22 .lut_mask = 64'h000000000000FFFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N15
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18_cout  = CARRY(( !\num2[0]~input_o  ) + ( \num1[0]~input_o  ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22_cout  ))
+
+	.dataa(!\num1[0]~input_o ),
+	.datab(gnd),
+	.datac(!\num2[0]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~22_cout ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18_cout ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18 .lut_mask = 64'h0000AAAA0000F0F0;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N18
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14_cout  = CARRY(( !\num2[1]~input_o  ) + ( (!\num2[3]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13_sumout )) # (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ((\num1[1]~input_o ))))) # (\num2[3]~input_o  & (((\num1[1]~input_o )))) ) + ( 
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18_cout  ))
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[0]~13_sumout ),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~18_cout ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14_cout ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14 .lut_mask = 64'h0000F7800000FF00;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N21
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10_cout  = CARRY(( !\num2[2]~input_o  ) + ( (!\num2[3]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout )) # (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ((\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3_combout ))))) # 
+// (\num2[3]~input_o  & (((\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3_combout )))) ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14_cout  ))
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ),
+	.datad(!\num2[2]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[4]~3_combout ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~14_cout ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10_cout ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10 .lut_mask = 64'h0000F7800000FF00;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N24
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6_cout  = CARRY(( !\num2[3]~input_o  ) + ( (!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [10] & (((\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5_sumout )))) # 
+// (\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [10] & (((\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2_combout )) # (\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0_combout ))) ) + ( 
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10_cout  ))
+
+	.dataa(!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [10]),
+	.datab(!\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~0_combout ),
+	.datac(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[2]~5_sumout ),
+	.datad(!\num2[3]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|StageOut[5]~2_combout ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~10_cout ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(),
+	.cout(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6_cout ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6 .lut_mask = 64'h0000E4A00000FF00;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y19_N27
+cyclonev_lcell_comb \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1 (
+// Equation(s):
+// \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1_sumout  = SUM(( VCC ) + ( GND ) + ( \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6_cout  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~6_cout ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1 .extended_lut = "off";
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1 .lut_mask = 64'h0000FFFF0000FFFF;
+defparam \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N39
+cyclonev_lcell_comb \FPGA_ALU|Mux3~0 (
+// Equation(s):
+// \FPGA_ALU|Mux3~0_combout  = ( \FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1_sumout  & ( (!\op[0]~input_o  & ((!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ((\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout ))) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & (\num1[0]~input_o )))) ) ) # ( !\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1_sumout  & ( ((!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & 
+// ((\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout ))) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & (\num1[0]~input_o ))) # (\op[0]~input_o ) ) )
+
+	.dataa(!\op[0]~input_o ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.datac(!\num1[0]~input_o ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|op_4~1_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux3~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux3~0 .extended_lut = "off";
+defparam \FPGA_ALU|Mux3~0 .lut_mask = 64'h57DF57DF028A028A;
+defparam \FPGA_ALU|Mux3~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N30
+cyclonev_lcell_comb \FPGA_ALU|Mux3~1 (
+// Equation(s):
+// \FPGA_ALU|Mux3~1_combout  = ( \num2[0]~input_o  & ( \num2[1]~input_o  & ( (!\num1[0]~input_o  & ((!\op[0]~input_o  & (\op[2]~input_o )) # (\op[0]~input_o  & ((\op[1]~input_o ))))) # (\num1[0]~input_o  & (!\op[1]~input_o  & ((!\op[0]~input_o ) # 
+// (\op[2]~input_o )))) ) ) ) # ( !\num2[0]~input_o  & ( \num2[1]~input_o  & ( (\num1[0]~input_o  & ((!\op[0]~input_o  & (\op[2]~input_o )) # (\op[0]~input_o  & ((\op[1]~input_o ))))) ) ) ) # ( \num2[0]~input_o  & ( !\num2[1]~input_o  & ( (!\num1[0]~input_o  
+// & ((!\op[0]~input_o  & (\op[2]~input_o )) # (\op[0]~input_o  & ((\op[1]~input_o ))))) # (\num1[0]~input_o  & (!\op[1]~input_o  & ((!\op[0]~input_o ) # (\op[2]~input_o )))) ) ) ) # ( !\num2[0]~input_o  & ( !\num2[1]~input_o  & ( (\num1[0]~input_o  & 
+// (((!\op[0]~input_o  & \op[2]~input_o )) # (\op[1]~input_o ))) ) ) )
+
+	.dataa(!\num1[0]~input_o ),
+	.datab(!\op[0]~input_o ),
+	.datac(!\op[2]~input_o ),
+	.datad(!\op[1]~input_o ),
+	.datae(!\num2[0]~input_o ),
+	.dataf(!\num2[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux3~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux3~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mux3~1 .lut_mask = 64'h04554D2A04154D2A;
+defparam \FPGA_ALU|Mux3~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N24
+cyclonev_lcell_comb \FPGA_ALU|ShiftRight0~0 (
+// Equation(s):
+// \FPGA_ALU|ShiftRight0~0_combout  = ( \num2[1]~input_o  & ( \num1[1]~input_o  & ( (!\num2[0]~input_o  & ((\num1[2]~input_o ))) # (\num2[0]~input_o  & (\num1[3]~input_o )) ) ) ) # ( !\num2[1]~input_o  & ( \num1[1]~input_o  & ( (\num2[0]~input_o ) # 
+// (\num1[0]~input_o ) ) ) ) # ( \num2[1]~input_o  & ( !\num1[1]~input_o  & ( (!\num2[0]~input_o  & ((\num1[2]~input_o ))) # (\num2[0]~input_o  & (\num1[3]~input_o )) ) ) ) # ( !\num2[1]~input_o  & ( !\num1[1]~input_o  & ( (\num1[0]~input_o  & 
+// !\num2[0]~input_o ) ) ) )
+
+	.dataa(!\num1[3]~input_o ),
+	.datab(!\num1[2]~input_o ),
+	.datac(!\num1[0]~input_o ),
+	.datad(!\num2[0]~input_o ),
+	.datae(!\num2[1]~input_o ),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftRight0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftRight0~0 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftRight0~0 .lut_mask = 64'h0F0033550FFF3355;
+defparam \FPGA_ALU|ShiftRight0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N36
+cyclonev_lcell_comb \FPGA_ALU|Mux3~2 (
+// Equation(s):
+// \FPGA_ALU|Mux3~2_combout  = ( \op[1]~input_o  & ( \FPGA_ALU|ShiftRight0~0_combout  & ( (\op[3]~input_o  & \FPGA_ALU|Mux3~1_combout ) ) ) ) # ( !\op[1]~input_o  & ( \FPGA_ALU|ShiftRight0~0_combout  & ( (\op[3]~input_o  & (((\op[0]~input_o  & 
+// !\op[2]~input_o )) # (\FPGA_ALU|Mux3~1_combout ))) ) ) ) # ( \op[1]~input_o  & ( !\FPGA_ALU|ShiftRight0~0_combout  & ( (\op[3]~input_o  & \FPGA_ALU|Mux3~1_combout ) ) ) ) # ( !\op[1]~input_o  & ( !\FPGA_ALU|ShiftRight0~0_combout  & ( (\op[3]~input_o  & 
+// \FPGA_ALU|Mux3~1_combout ) ) ) )
+
+	.dataa(!\op[3]~input_o ),
+	.datab(!\op[0]~input_o ),
+	.datac(!\op[2]~input_o ),
+	.datad(!\FPGA_ALU|Mux3~1_combout ),
+	.datae(!\op[1]~input_o ),
+	.dataf(!\FPGA_ALU|ShiftRight0~0_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux3~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux3~2 .extended_lut = "off";
+defparam \FPGA_ALU|Mux3~2 .lut_mask = 64'h0055005510550055;
+defparam \FPGA_ALU|Mux3~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N36
+cyclonev_lcell_comb \FPGA_ALU|Mux3~3 (
+// Equation(s):
+// \FPGA_ALU|Mux3~3_combout  = ( \FPGA_ALU|Mux3~2_combout  ) # ( !\FPGA_ALU|Mux3~2_combout  & ( (\FPGA_ALU|Mux4~0_combout  & \FPGA_ALU|Mux3~0_combout ) ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|Mux4~0_combout ),
+	.datad(!\FPGA_ALU|Mux3~0_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux3~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux3~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux3~3 .extended_lut = "off";
+defparam \FPGA_ALU|Mux3~3 .lut_mask = 64'h000F000FFFFFFFFF;
+defparam \FPGA_ALU|Mux3~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N45
+cyclonev_lcell_comb \FPGA_ALU|ShiftLeft0~0 (
+// Equation(s):
+// \FPGA_ALU|ShiftLeft0~0_combout  = ( !\num2[1]~input_o  & ( (!\num2[0]~input_o  & (\num1[1]~input_o )) # (\num2[0]~input_o  & ((\num1[0]~input_o ))) ) )
+
+	.dataa(!\num1[1]~input_o ),
+	.datab(gnd),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num1[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\num2[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftLeft0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftLeft0~0 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftLeft0~0 .lut_mask = 64'h505F505F00000000;
+defparam \FPGA_ALU|ShiftLeft0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N42
+cyclonev_lcell_comb \FPGA_ALU|ShiftRight0~1 (
+// Equation(s):
+// \FPGA_ALU|ShiftRight0~1_combout  = ( \num1[2]~input_o  & ( (!\num2[0]~input_o  & ((!\num2[1]~input_o  & (\num1[1]~input_o )) # (\num2[1]~input_o  & ((\num1[3]~input_o ))))) # (\num2[0]~input_o  & (((!\num2[1]~input_o )))) ) ) # ( !\num1[2]~input_o  & ( 
+// (!\num2[0]~input_o  & ((!\num2[1]~input_o  & (\num1[1]~input_o )) # (\num2[1]~input_o  & ((\num1[3]~input_o ))))) ) )
+
+	.dataa(!\num1[1]~input_o ),
+	.datab(!\num2[0]~input_o ),
+	.datac(!\num1[3]~input_o ),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[2]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftRight0~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftRight0~1 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftRight0~1 .lut_mask = 64'h440C440C770C770C;
+defparam \FPGA_ALU|ShiftRight0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N30
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~1 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~1_sumout  = SUM(( (\num2[1]~input_o  & \num1[0]~input_o ) ) + ( (\num2[0]~input_o  & \num1[1]~input_o ) ) + ( !VCC ))
+// \FPGA_ALU|MULT_INST|Add1~2  = CARRY(( (\num2[1]~input_o  & \num1[0]~input_o ) ) + ( (\num2[0]~input_o  & \num1[1]~input_o ) ) + ( !VCC ))
+
+	.dataa(!\num2[0]~input_o ),
+	.datab(gnd),
+	.datac(!\num2[1]~input_o ),
+	.datad(!\num1[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~1_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~2 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~1 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~1 .lut_mask = 64'h0000FFAA0000000F;
+defparam \FPGA_ALU|MULT_INST|Add1~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N48
+cyclonev_lcell_comb \FPGA_ALU|Mux2~4 (
+// Equation(s):
+// \FPGA_ALU|Mux2~4_combout  = ( !\op[1]~input_o  & ( ((!\op[0]~input_o  & (\FPGA_ALU|MULT_INST|Add1~1_sumout )) # (\op[0]~input_o  & (((\FPGA_ALU|ShiftRight0~1_combout ))))) ) ) # ( \op[1]~input_o  & ( (!\op[0]~input_o  & ((((\FPGA_ALU|ShiftLeft0~0_combout 
+// ))))) # (\op[0]~input_o  & (!\num1[1]~input_o  $ ((!\num2[1]~input_o )))) ) )
+
+	.dataa(!\num1[1]~input_o ),
+	.datab(!\op[0]~input_o ),
+	.datac(!\num2[1]~input_o ),
+	.datad(!\FPGA_ALU|ShiftLeft0~0_combout ),
+	.datae(!\op[1]~input_o ),
+	.dataf(!\FPGA_ALU|ShiftRight0~1_combout ),
+	.datag(!\FPGA_ALU|MULT_INST|Add1~1_sumout ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux2~4_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux2~4 .extended_lut = "on";
+defparam \FPGA_ALU|Mux2~4 .lut_mask = 64'h0C0C12DE3F3F12DE;
+defparam \FPGA_ALU|Mux2~4 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N18
+cyclonev_lcell_comb \FPGA_ALU|Mux2~0 (
+// Equation(s):
+// \FPGA_ALU|Mux2~0_combout  = ( \num2[0]~input_o  & ( \num2[1]~input_o  & ( (!\op[1]~input_o  & (((!\op[0]~input_o )) # (\num1[1]~input_o ))) # (\op[1]~input_o  & (!\num1[1]~input_o  $ (!\op[0]~input_o  $ (\num1[0]~input_o )))) ) ) ) # ( !\num2[0]~input_o  
+// & ( \num2[1]~input_o  & ( (!\num1[1]~input_o  & ((!\op[0]~input_o ) # (\op[1]~input_o ))) # (\num1[1]~input_o  & ((!\op[1]~input_o ))) ) ) ) # ( \num2[0]~input_o  & ( !\num2[1]~input_o  & ( (!\op[1]~input_o  & (\num1[1]~input_o  & (!\op[0]~input_o ))) # 
+// (\op[1]~input_o  & (!\num1[1]~input_o  $ (!\op[0]~input_o  $ (!\num1[0]~input_o )))) ) ) ) # ( !\num2[0]~input_o  & ( !\num2[1]~input_o  & ( (\num1[1]~input_o  & ((!\op[0]~input_o ) # (\op[1]~input_o ))) ) ) )
+
+	.dataa(!\num1[1]~input_o ),
+	.datab(!\op[0]~input_o ),
+	.datac(!\num1[0]~input_o ),
+	.datad(!\op[1]~input_o ),
+	.datae(!\num2[0]~input_o ),
+	.dataf(!\num2[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux2~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux2~0 .extended_lut = "off";
+defparam \FPGA_ALU|Mux2~0 .lut_mask = 64'h44554496DDAADD69;
+defparam \FPGA_ALU|Mux2~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N54
+cyclonev_lcell_comb \FPGA_ALU|Mux2~1 (
+// Equation(s):
+// \FPGA_ALU|Mux2~1_combout  = ( \FPGA_ALU|Mux2~0_combout  & ( (\op[3]~input_o  & ((\FPGA_ALU|Mux2~4_combout ) # (\op[2]~input_o ))) ) ) # ( !\FPGA_ALU|Mux2~0_combout  & ( (!\op[2]~input_o  & (\FPGA_ALU|Mux2~4_combout  & \op[3]~input_o )) ) )
+
+	.dataa(!\op[2]~input_o ),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|Mux2~4_combout ),
+	.datad(!\op[3]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux2~0_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux2~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux2~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mux2~1 .lut_mask = 64'h000A000A005F005F;
+defparam \FPGA_ALU|Mux2~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N45
+cyclonev_lcell_comb \FPGA_ALU|Mux2~2 (
+// Equation(s):
+// \FPGA_ALU|Mux2~2_combout  = ( \op[0]~input_o  & ( \num2[3]~input_o  & ( !\FPGA_ALU|Mux2~1_combout  ) ) ) # ( !\op[0]~input_o  & ( \num2[3]~input_o  & ( !\FPGA_ALU|Mux2~1_combout  ) ) ) # ( \op[0]~input_o  & ( !\num2[3]~input_o  & ( 
+// (!\FPGA_ALU|Mux2~1_combout  & ((!\FPGA_ALU|Mux4~0_combout ) # (\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ))) ) ) ) # ( !\op[0]~input_o  & ( !\num2[3]~input_o  & ( !\FPGA_ALU|Mux2~1_combout  ) ) )
+
+	.dataa(!\FPGA_ALU|Mux4~0_combout ),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|Mux2~1_combout ),
+	.datad(!\FPGA_ALU|Div0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datae(!\op[0]~input_o ),
+	.dataf(!\num2[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux2~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux2~2 .extended_lut = "off";
+defparam \FPGA_ALU|Mux2~2 .lut_mask = 64'hF0F0A0F0F0F0F0F0;
+defparam \FPGA_ALU|Mux2~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N48
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout  = ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ( \num1[1]~input_o  ) ) # ( 
+// !\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & ( (!\num2[3]~input_o  & (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout )) # (\num2[3]~input_o  & ((\num1[1]~input_o ))) ) )
+
+	.dataa(gnd),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[0]~5_sumout ),
+	.datad(!\num1[1]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0 .lut_mask = 64'h0C3F0C3F00FF00FF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N48
+cyclonev_lcell_comb \FPGA_ALU|Mux2~3 (
+// Equation(s):
+// \FPGA_ALU|Mux2~3_combout  = ( \op[0]~input_o  & ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( !\FPGA_ALU|Mux2~2_combout  ) ) ) # ( !\op[0]~input_o  & ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( 
+// (!\FPGA_ALU|Mux2~2_combout ) # ((\FPGA_ALU|Mux4~0_combout  & \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout )) ) ) ) # ( \op[0]~input_o  & ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( !\FPGA_ALU|Mux2~2_combout  
+// ) ) ) # ( !\op[0]~input_o  & ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( (!\FPGA_ALU|Mux2~2_combout ) # ((\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout  & \FPGA_ALU|Mux4~0_combout )) ) ) )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout ),
+	.datab(!\FPGA_ALU|Mux2~2_combout ),
+	.datac(!\FPGA_ALU|Mux4~0_combout ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout ),
+	.datae(!\op[0]~input_o ),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux2~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux2~3 .extended_lut = "off";
+defparam \FPGA_ALU|Mux2~3 .lut_mask = 64'hCDCDCCCCCCCFCCCC;
+defparam \FPGA_ALU|Mux2~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N57
+cyclonev_lcell_comb \FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout (
+// Equation(s):
+// \FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout  = ( \num1[1]~input_o  & ( ((\num2[0]~input_o  & \num1[0]~input_o )) # (\num2[1]~input_o ) ) ) # ( !\num1[1]~input_o  & ( (\num2[1]~input_o  & (\num2[0]~input_o  & \num1[0]~input_o )) ) )
+
+	.dataa(gnd),
+	.datab(!\num2[1]~input_o ),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num1[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout .extended_lut = "off";
+defparam \FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout .lut_mask = 64'h00030003333F333F;
+defparam \FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N42
+cyclonev_lcell_comb \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout (
+// Equation(s):
+// \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout  = ( \num1[1]~input_o  & ( (!\num1[0]~input_o  & (\num2[0]~input_o  & \num2[1]~input_o )) ) ) # ( !\num1[1]~input_o  & ( ((!\num1[0]~input_o  & \num2[0]~input_o )) # (\num2[1]~input_o ) ) )
+
+	.dataa(gnd),
+	.datab(!\num1[0]~input_o ),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout .extended_lut = "off";
+defparam \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout .lut_mask = 64'h0CFF0CFF000C000C;
+defparam \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N48
+cyclonev_lcell_comb \FPGA_ALU|Mux1~0 (
+// Equation(s):
+// \FPGA_ALU|Mux1~0_combout  = ( \op[0]~input_o  & ( \num1[2]~input_o  & ( !\num2[2]~input_o  $ (((!\op[1]~input_o ) # (\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ))) ) ) ) # ( !\op[0]~input_o  & ( \num1[2]~input_o  & ( (!\op[1]~input_o ) # 
+// (!\num2[2]~input_o  $ (\FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout )) ) ) ) # ( \op[0]~input_o  & ( !\num1[2]~input_o  & ( (\op[1]~input_o  & (!\num2[2]~input_o  $ (!\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ))) ) ) ) # ( 
+// !\op[0]~input_o  & ( !\num1[2]~input_o  & ( !\num2[2]~input_o  $ (((!\op[1]~input_o ) # (!\FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ))) ) ) )
+
+	.dataa(!\num2[2]~input_o ),
+	.datab(!\op[1]~input_o ),
+	.datac(!\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ),
+	.datad(!\FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ),
+	.datae(!\op[0]~input_o ),
+	.dataf(!\num1[2]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux1~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux1~0 .extended_lut = "off";
+defparam \FPGA_ALU|Mux1~0 .lut_mask = 64'h55661212EEDD6565;
+defparam \FPGA_ALU|Mux1~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N36
+cyclonev_lcell_comb \FPGA_ALU|ShiftLeft0~1 (
+// Equation(s):
+// \FPGA_ALU|ShiftLeft0~1_combout  = ( \num1[1]~input_o  & ( (!\num2[1]~input_o  & (((\num2[0]~input_o )) # (\num1[2]~input_o ))) # (\num2[1]~input_o  & (((!\num2[0]~input_o  & \num1[0]~input_o )))) ) ) # ( !\num1[1]~input_o  & ( (!\num2[0]~input_o  & 
+// ((!\num2[1]~input_o  & (\num1[2]~input_o )) # (\num2[1]~input_o  & ((\num1[0]~input_o ))))) ) )
+
+	.dataa(!\num1[2]~input_o ),
+	.datab(!\num2[1]~input_o ),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num1[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftLeft0~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftLeft0~1 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftLeft0~1 .lut_mask = 64'h407040704C7C4C7C;
+defparam \FPGA_ALU|ShiftLeft0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N39
+cyclonev_lcell_comb \FPGA_ALU|ShiftRight0~2 (
+// Equation(s):
+// \FPGA_ALU|ShiftRight0~2_combout  = ( \num1[3]~input_o  & ( (!\num2[1]~input_o  & ((\num2[0]~input_o ) # (\num1[2]~input_o ))) ) ) # ( !\num1[3]~input_o  & ( (\num1[2]~input_o  & (!\num2[0]~input_o  & !\num2[1]~input_o )) ) )
+
+	.dataa(!\num1[2]~input_o ),
+	.datab(gnd),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftRight0~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftRight0~2 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftRight0~2 .lut_mask = 64'h500050005F005F00;
+defparam \FPGA_ALU|ShiftRight0~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N0
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~29 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~29_sumout  = SUM(( (\num1[0]~input_o  & \num2[2]~input_o ) ) + ( (\num1[1]~input_o  & \num2[1]~input_o ) ) + ( !VCC ))
+// \FPGA_ALU|MULT_INST|Add1~30  = CARRY(( (\num1[0]~input_o  & \num2[2]~input_o ) ) + ( (\num1[1]~input_o  & \num2[1]~input_o ) ) + ( !VCC ))
+
+	.dataa(!\num1[1]~input_o ),
+	.datab(!\num2[1]~input_o ),
+	.datac(!\num1[0]~input_o ),
+	.datad(!\num2[2]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~29_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~30 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~29 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~29 .lut_mask = 64'h0000EEEE0000000F;
+defparam \FPGA_ALU|MULT_INST|Add1~29 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N33
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~5 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~5_sumout  = SUM(( (\num2[0]~input_o  & \num1[2]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add1~29_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~2  ))
+// \FPGA_ALU|MULT_INST|Add1~6  = CARRY(( (\num2[0]~input_o  & \num1[2]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add1~29_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~2  ))
+
+	.dataa(!\num2[0]~input_o ),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|MULT_INST|Add1~29_sumout ),
+	.datad(!\num1[2]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~2 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~5_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~5 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~5 .lut_mask = 64'h0000F0F000000055;
+defparam \FPGA_ALU|MULT_INST|Add1~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N0
+cyclonev_lcell_comb \FPGA_ALU|Mux1~6 (
+// Equation(s):
+// \FPGA_ALU|Mux1~6_combout  = ( !\op[1]~input_o  & ( (((!\op[0]~input_o  & (\FPGA_ALU|MULT_INST|Add1~5_sumout )) # (\op[0]~input_o  & ((\FPGA_ALU|ShiftRight0~2_combout ))))) ) ) # ( \op[1]~input_o  & ( ((!\op[0]~input_o  & (((\FPGA_ALU|ShiftLeft0~1_combout 
+// )))) # (\op[0]~input_o  & (!\num2[2]~input_o  $ (((!\num1[2]~input_o )))))) ) )
+
+	.dataa(!\num2[2]~input_o ),
+	.datab(!\FPGA_ALU|ShiftLeft0~1_combout ),
+	.datac(!\num1[2]~input_o ),
+	.datad(!\FPGA_ALU|ShiftRight0~2_combout ),
+	.datae(!\op[1]~input_o ),
+	.dataf(!\op[0]~input_o ),
+	.datag(!\FPGA_ALU|MULT_INST|Add1~5_sumout ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux1~6_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux1~6 .extended_lut = "on";
+defparam \FPGA_ALU|Mux1~6 .lut_mask = 64'h0F0F333300FF5A5A;
+defparam \FPGA_ALU|Mux1~6 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N27
+cyclonev_lcell_comb \FPGA_ALU|Mux1~1 (
+// Equation(s):
+// \FPGA_ALU|Mux1~1_combout  = ( \FPGA_ALU|Mux1~6_combout  & ( (\op[3]~input_o  & ((!\op[2]~input_o ) # (\FPGA_ALU|Mux1~0_combout ))) ) ) # ( !\FPGA_ALU|Mux1~6_combout  & ( (\op[2]~input_o  & (\op[3]~input_o  & \FPGA_ALU|Mux1~0_combout )) ) )
+
+	.dataa(!\op[2]~input_o ),
+	.datab(gnd),
+	.datac(!\op[3]~input_o ),
+	.datad(!\FPGA_ALU|Mux1~0_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~6_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux1~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux1~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mux1~1 .lut_mask = 64'h000500050A0F0A0F;
+defparam \FPGA_ALU|Mux1~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N15
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout  = ( \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout  & ( ((\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout )) # (\num2[3]~input_o ) ) ) # ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout  & ( (!\num2[3]~input_o  & 
+// (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout )) ) )
+
+	.dataa(gnd),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[1]~9_sumout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[4]~1_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2 .lut_mask = 64'h00C000C03FFF3FFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N30
+cyclonev_lcell_comb \FPGA_ALU|Mux1~2 (
+// Equation(s):
+// \FPGA_ALU|Mux1~2_combout  = ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( ((\FPGA_ALU|Mux4~0_combout  & ((!\op[0]~input_o  & (\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout )) # (\op[0]~input_o  & 
+// ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5])))))) # (\FPGA_ALU|Mux1~1_combout ) ) ) # ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( ((\FPGA_ALU|Mux4~0_combout  & ((!\op[0]~input_o  & 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout )) # (\op[0]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5])))))) # (\FPGA_ALU|Mux1~1_combout ) ) )
+
+	.dataa(!\FPGA_ALU|Mux4~0_combout ),
+	.datab(!\FPGA_ALU|Mux1~1_combout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout ),
+	.datad(!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [5]),
+	.datae(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.dataf(!\op[0]~input_o ),
+	.datag(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux1~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux1~2 .extended_lut = "on";
+defparam \FPGA_ALU|Mux1~2 .lut_mask = 64'h3737373777337733;
+defparam \FPGA_ALU|Mux1~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N12
+cyclonev_lcell_comb \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6 (
+// Equation(s):
+// \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout  = ( \FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout  & ( (((!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & 
+// !\num2[3]~input_o )) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout )) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ) ) ) # ( 
+// !\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout  & ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & (\num2[3]~input_o  & 
+// ((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout ) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout )))) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout  & 
+// (((\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout ) # (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout )))) ) )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[3]~1_sumout ),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~3_combout ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[5]~5_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|add_sub_2_result_int[2]~13_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6 .extended_lut = "off";
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6 .lut_mask = 64'h077707778FFF8FFF;
+defparam \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N24
+cyclonev_lcell_comb \FPGA_ALU|ShiftLeft0~2 (
+// Equation(s):
+// \FPGA_ALU|ShiftLeft0~2_combout  = ( \num2[1]~input_o  & ( \num1[1]~input_o  & ( (!\num2[0]~input_o ) # (\num1[0]~input_o ) ) ) ) # ( !\num2[1]~input_o  & ( \num1[1]~input_o  & ( (!\num2[0]~input_o  & (\num1[3]~input_o )) # (\num2[0]~input_o  & 
+// ((\num1[2]~input_o ))) ) ) ) # ( \num2[1]~input_o  & ( !\num1[1]~input_o  & ( (\num1[0]~input_o  & \num2[0]~input_o ) ) ) ) # ( !\num2[1]~input_o  & ( !\num1[1]~input_o  & ( (!\num2[0]~input_o  & (\num1[3]~input_o )) # (\num2[0]~input_o  & 
+// ((\num1[2]~input_o ))) ) ) )
+
+	.dataa(!\num1[3]~input_o ),
+	.datab(!\num1[0]~input_o ),
+	.datac(!\num1[2]~input_o ),
+	.datad(!\num2[0]~input_o ),
+	.datae(!\num2[1]~input_o ),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftLeft0~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftLeft0~2 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftLeft0~2 .lut_mask = 64'h550F0033550FFF33;
+defparam \FPGA_ALU|ShiftLeft0~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N18
+cyclonev_lcell_comb \FPGA_ALU|ShiftRight0~3 (
+// Equation(s):
+// \FPGA_ALU|ShiftRight0~3_combout  = (!\num2[0]~input_o  & (\num1[3]~input_o  & !\num2[1]~input_o ))
+
+	.dataa(gnd),
+	.datab(!\num2[0]~input_o ),
+	.datac(!\num1[3]~input_o ),
+	.datad(!\num2[1]~input_o ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|ShiftRight0~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|ShiftRight0~3 .extended_lut = "off";
+defparam \FPGA_ALU|ShiftRight0~3 .lut_mask = 64'h0C000C000C000C00;
+defparam \FPGA_ALU|ShiftRight0~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N0
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add0~1 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add0~1_sumout  = SUM(( (\num2[3]~input_o  & \num1[0]~input_o ) ) + ( (\num2[0]~input_o  & \num1[3]~input_o ) ) + ( !VCC ))
+// \FPGA_ALU|MULT_INST|Add0~2  = CARRY(( (\num2[3]~input_o  & \num1[0]~input_o ) ) + ( (\num2[0]~input_o  & \num1[3]~input_o ) ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\num2[0]~input_o ),
+	.datad(!\num1[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add0~1_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add0~2 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add0~1 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add0~1 .lut_mask = 64'h0000FFF000000033;
+defparam \FPGA_ALU|MULT_INST|Add0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N3
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~33 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~33_sumout  = SUM(( (\num1[1]~input_o  & \num2[2]~input_o ) ) + ( (\num2[1]~input_o  & \num1[2]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add1~30  ))
+// \FPGA_ALU|MULT_INST|Add1~34  = CARRY(( (\num1[1]~input_o  & \num2[2]~input_o ) ) + ( (\num2[1]~input_o  & \num1[2]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add1~30  ))
+
+	.dataa(!\num1[1]~input_o ),
+	.datab(!\num2[1]~input_o ),
+	.datac(!\num2[2]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num1[2]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~30 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~33_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~34 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~33 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~33 .lut_mask = 64'h0000FFCC00000505;
+defparam \FPGA_ALU|MULT_INST|Add1~33 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N36
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~9 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~9_sumout  = SUM(( \FPGA_ALU|MULT_INST|Add1~33_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~1_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~6  ))
+// \FPGA_ALU|MULT_INST|Add1~10  = CARRY(( \FPGA_ALU|MULT_INST|Add1~33_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~1_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~6  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|MULT_INST|Add0~1_sumout ),
+	.datad(!\FPGA_ALU|MULT_INST|Add1~33_sumout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~9_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~10 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~9 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~9 .lut_mask = 64'h0000F0F0000000FF;
+defparam \FPGA_ALU|MULT_INST|Add1~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N6
+cyclonev_lcell_comb \FPGA_ALU|Mux0~6 (
+// Equation(s):
+// \FPGA_ALU|Mux0~6_combout  = ( !\op[1]~input_o  & ( (((!\op[0]~input_o  & (\FPGA_ALU|MULT_INST|Add1~9_sumout )) # (\op[0]~input_o  & ((\FPGA_ALU|ShiftRight0~3_combout ))))) ) ) # ( \op[1]~input_o  & ( (!\op[0]~input_o  & (((\FPGA_ALU|ShiftLeft0~2_combout 
+// )))) # (\op[0]~input_o  & (!\num2[3]~input_o  $ ((((!\num1[3]~input_o )))))) ) )
+
+	.dataa(!\num2[3]~input_o ),
+	.datab(!\FPGA_ALU|ShiftLeft0~2_combout ),
+	.datac(!\num1[3]~input_o ),
+	.datad(!\op[0]~input_o ),
+	.datae(!\op[1]~input_o ),
+	.dataf(!\FPGA_ALU|ShiftRight0~3_combout ),
+	.datag(!\FPGA_ALU|MULT_INST|Add1~9_sumout ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux0~6_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux0~6 .extended_lut = "on";
+defparam \FPGA_ALU|Mux0~6 .lut_mask = 64'h0F00335A0FFF335A;
+defparam \FPGA_ALU|Mux0~6 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N45
+cyclonev_lcell_comb \FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout (
+// Equation(s):
+// \FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout  = ( \num1[2]~input_o  & ( (\num2[2]~input_o  & \FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ) ) ) # ( !\num1[2]~input_o  & ( (\FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ) # 
+// (\num2[2]~input_o ) ) )
+
+	.dataa(!\num2[2]~input_o ),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|u_nbit_sub|SUB_BITS[1].u_bit_sub|Bout~combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num1[2]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout .extended_lut = "off";
+defparam \FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout .lut_mask = 64'h5F5F5F5F05050505;
+defparam \FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N33
+cyclonev_lcell_comb \FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout (
+// Equation(s):
+// \FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout  = ( \num2[2]~input_o  & ( (\num1[2]~input_o ) # (\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ) ) ) # ( !\num2[2]~input_o  & ( (\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout  & 
+// \num1[2]~input_o ) ) )
+
+	.dataa(!\FPGA_ALU|SUM_INST|adder_loop[1].FA_inst|Cout~combout ),
+	.datab(gnd),
+	.datac(!\num1[2]~input_o ),
+	.datad(gnd),
+	.datae(!\num2[2]~input_o ),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout .extended_lut = "off";
+defparam \FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout .lut_mask = 64'h05055F5F05055F5F;
+defparam \FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N12
+cyclonev_lcell_comb \FPGA_ALU|Mux0~0 (
+// Equation(s):
+// \FPGA_ALU|Mux0~0_combout  = ( \num2[3]~input_o  & ( \num1[3]~input_o  & ( (!\op[1]~input_o ) # ((!\op[0]~input_o  & (\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout )) # (\op[0]~input_o  & ((\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout 
+// )))) ) ) ) # ( !\num2[3]~input_o  & ( \num1[3]~input_o  & ( (!\op[0]~input_o  & ((!\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ) # ((!\op[1]~input_o )))) # (\op[0]~input_o  & (((!\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout  & 
+// \op[1]~input_o )))) ) ) ) # ( \num2[3]~input_o  & ( !\num1[3]~input_o  & ( (!\op[0]~input_o  & ((!\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ) # ((!\op[1]~input_o )))) # (\op[0]~input_o  & 
+// (((!\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout  & \op[1]~input_o )))) ) ) ) # ( !\num2[3]~input_o  & ( !\num1[3]~input_o  & ( (\op[1]~input_o  & ((!\op[0]~input_o  & (\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout )) # (\op[0]~input_o  
+// & ((\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout ))))) ) ) )
+
+	.dataa(!\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ),
+	.datab(!\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout ),
+	.datac(!\op[0]~input_o ),
+	.datad(!\op[1]~input_o ),
+	.datae(!\num2[3]~input_o ),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux0~0 .extended_lut = "off";
+defparam \FPGA_ALU|Mux0~0 .lut_mask = 64'h0053F0ACF0ACFF53;
+defparam \FPGA_ALU|Mux0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N48
+cyclonev_lcell_comb \FPGA_ALU|Mux0~1 (
+// Equation(s):
+// \FPGA_ALU|Mux0~1_combout  = ( \FPGA_ALU|Mux0~0_combout  & ( (\op[3]~input_o  & ((\FPGA_ALU|Mux0~6_combout ) # (\op[2]~input_o ))) ) ) # ( !\FPGA_ALU|Mux0~0_combout  & ( (!\op[2]~input_o  & (\op[3]~input_o  & \FPGA_ALU|Mux0~6_combout )) ) )
+
+	.dataa(!\op[2]~input_o ),
+	.datab(!\op[3]~input_o ),
+	.datac(!\FPGA_ALU|Mux0~6_combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux0~0_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux0~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux0~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mux0~1 .lut_mask = 64'h0202020213131313;
+defparam \FPGA_ALU|Mux0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N42
+cyclonev_lcell_comb \FPGA_ALU|Mux0~2 (
+// Equation(s):
+// \FPGA_ALU|Mux0~2_combout  = ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( ((\FPGA_ALU|Mux4~0_combout  & ((!\op[0]~input_o  & (\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout )) # (\op[0]~input_o  & 
+// ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0])))))) # (\FPGA_ALU|Mux0~1_combout ) ) ) # ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( ((\FPGA_ALU|Mux4~0_combout  & ((!\op[0]~input_o  & 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout )) # (\op[0]~input_o  & ((!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0])))))) # (\FPGA_ALU|Mux0~1_combout ) ) )
+
+	.dataa(!\op[0]~input_o ),
+	.datab(!\FPGA_ALU|Mux4~0_combout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout ),
+	.datad(!\FPGA_ALU|Mux0~1_combout ),
+	.datae(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.dataf(!\FPGA_ALU|Div0|auto_generated|divider|divider|selnose [0]),
+	.datag(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux0~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux0~2 .extended_lut = "on";
+defparam \FPGA_ALU|Mux0~2 .lut_mask = 64'h13FF13FF02FF02FF;
+defparam \FPGA_ALU|Mux0~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N0
+cyclonev_lcell_comb \FPGA_ALU|Equal1~0 (
+// Equation(s):
+// \FPGA_ALU|Equal1~0_combout  = ( !\FPGA_ALU|Mux0~2_combout  & ( !\FPGA_ALU|Mux2~3_combout  & ( (!\FPGA_ALU|Mux3~2_combout  & (!\FPGA_ALU|Mux1~2_combout  & ((!\FPGA_ALU|Mux3~0_combout ) # (!\FPGA_ALU|Mux4~0_combout )))) ) ) )
+
+	.dataa(!\FPGA_ALU|Mux3~2_combout ),
+	.datab(!\FPGA_ALU|Mux3~0_combout ),
+	.datac(!\FPGA_ALU|Mux4~0_combout ),
+	.datad(!\FPGA_ALU|Mux1~2_combout ),
+	.datae(!\FPGA_ALU|Mux0~2_combout ),
+	.dataf(!\FPGA_ALU|Mux2~3_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Equal1~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Equal1~0 .extended_lut = "off";
+defparam \FPGA_ALU|Equal1~0 .lut_mask = 64'hA800000000000000;
+defparam \FPGA_ALU|Equal1~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N6
+cyclonev_lcell_comb \FPGA_ALU|N~0 (
+// Equation(s):
+// \FPGA_ALU|N~0_combout  = ( !\op[0]~input_o  & ( \FPGA_ALU|Mux0~0_combout  & ( (\op[3]~input_o  & (\op[1]~input_o  & \op[2]~input_o )) ) ) )
+
+	.dataa(!\op[3]~input_o ),
+	.datab(!\op[1]~input_o ),
+	.datac(!\op[2]~input_o ),
+	.datad(gnd),
+	.datae(!\op[0]~input_o ),
+	.dataf(!\FPGA_ALU|Mux0~0_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|N~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|N~0 .extended_lut = "off";
+defparam \FPGA_ALU|N~0 .lut_mask = 64'h0000000001010000;
+defparam \FPGA_ALU|N~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N6
+cyclonev_lcell_comb \FPGA_ALU|Equal3~0 (
+// Equation(s):
+// \FPGA_ALU|Equal3~0_combout  = ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout  & ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout  & 
+// !\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout ) ) ) ) # ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout  & ( \FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( 
+// (!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout  & !\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout ) ) ) ) # ( !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout  & ( 
+// !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout  & !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout ) ) ) )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~9_sumout ),
+	.datab(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[13]~0_combout ),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[14]~2_combout ),
+	.datad(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~13_sumout ),
+	.datae(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~5_sumout ),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Equal3~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Equal3~0 .extended_lut = "off";
+defparam \FPGA_ALU|Equal3~0 .lut_mask = 64'hAA000000C0C0C0C0;
+defparam \FPGA_ALU|Equal3~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N54
+cyclonev_lcell_comb \FPGA_ALU|Mux4~2 (
+// Equation(s):
+// \FPGA_ALU|Mux4~2_combout  = ( \num2[3]~input_o  & ( \num1[3]~input_o  & ( (!\op[2]~input_o  & ((!\op[0]~input_o ))) # (\op[2]~input_o  & ((\op[0]~input_o ) # (\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ))) ) ) ) # ( !\num2[3]~input_o  & ( 
+// \num1[3]~input_o  & ( (!\op[2]~input_o  & ((!\op[0]~input_o ))) # (\op[2]~input_o  & (\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout  & \op[0]~input_o )) ) ) ) # ( \num2[3]~input_o  & ( !\num1[3]~input_o  & ( (\op[2]~input_o  & ((!\op[0]~input_o ) 
+// # (\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout ))) ) ) ) # ( !\num2[3]~input_o  & ( !\num1[3]~input_o  & ( (\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout  & (\op[2]~input_o  & !\op[0]~input_o )) ) ) )
+
+	.dataa(!\FPGA_ALU|u_nbit_sub|SUB_BITS[2].u_bit_sub|Bout~combout ),
+	.datab(!\FPGA_ALU|SUM_INST|adder_loop[2].FA_inst|Cout~combout ),
+	.datac(!\op[2]~input_o ),
+	.datad(!\op[0]~input_o ),
+	.datae(!\num2[3]~input_o ),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux4~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux4~2 .extended_lut = "off";
+defparam \FPGA_ALU|Mux4~2 .lut_mask = 64'h05000F03F003F50F;
+defparam \FPGA_ALU|Mux4~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N3
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add0~5 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add0~5_sumout  = SUM(( GND ) + ( (\num2[3]~input_o  & \num1[1]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add0~2  ))
+// \FPGA_ALU|MULT_INST|Add0~6  = CARRY(( GND ) + ( (\num2[3]~input_o  & \num1[1]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add0~2  ))
+
+	.dataa(gnd),
+	.datab(!\num2[3]~input_o ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num1[1]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add0~2 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add0~5_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add0~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add0~5 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add0~5 .lut_mask = 64'h0000FFCC00000000;
+defparam \FPGA_ALU|MULT_INST|Add0~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N6
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add0~9 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add0~9_sumout  = SUM(( (\num2[3]~input_o  & \num1[2]~input_o ) ) + ( GND ) + ( \FPGA_ALU|MULT_INST|Add0~6  ))
+// \FPGA_ALU|MULT_INST|Add0~10  = CARRY(( (\num2[3]~input_o  & \num1[2]~input_o ) ) + ( GND ) + ( \FPGA_ALU|MULT_INST|Add0~6  ))
+
+	.dataa(gnd),
+	.datab(!\num2[3]~input_o ),
+	.datac(!\num1[2]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add0~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add0~9_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add0~10 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add0~9 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add0~9 .lut_mask = 64'h0000FFFF00000303;
+defparam \FPGA_ALU|MULT_INST|Add0~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N9
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add0~13 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add0~13_sumout  = SUM(( GND ) + ( (\num2[3]~input_o  & \num1[3]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add0~10  ))
+// \FPGA_ALU|MULT_INST|Add0~14  = CARRY(( GND ) + ( (\num2[3]~input_o  & \num1[3]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add0~10  ))
+
+	.dataa(gnd),
+	.datab(!\num2[3]~input_o ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add0~10 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add0~13_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add0~14 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add0~13 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add0~13 .lut_mask = 64'h0000FFCC00000000;
+defparam \FPGA_ALU|MULT_INST|Add0~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N12
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add0~17 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add0~17_sumout  = SUM(( GND ) + ( GND ) + ( \FPGA_ALU|MULT_INST|Add0~14  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add0~14 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add0~17_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add0~17 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add0~17 .lut_mask = 64'h0000FFFF00000000;
+defparam \FPGA_ALU|MULT_INST|Add0~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N6
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~37 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~37_sumout  = SUM(( (\num1[2]~input_o  & \num2[2]~input_o ) ) + ( (\num2[1]~input_o  & \num1[3]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add1~34  ))
+// \FPGA_ALU|MULT_INST|Add1~38  = CARRY(( (\num1[2]~input_o  & \num2[2]~input_o ) ) + ( (\num2[1]~input_o  & \num1[3]~input_o ) ) + ( \FPGA_ALU|MULT_INST|Add1~34  ))
+
+	.dataa(!\num1[2]~input_o ),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\num2[1]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\num1[3]~input_o ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~34 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~37_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~38 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~37 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~37 .lut_mask = 64'h0000FFF000001111;
+defparam \FPGA_ALU|MULT_INST|Add1~37 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N9
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~41 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~41_sumout  = SUM(( (\num2[2]~input_o  & \num1[3]~input_o ) ) + ( GND ) + ( \FPGA_ALU|MULT_INST|Add1~38  ))
+// \FPGA_ALU|MULT_INST|Add1~42  = CARRY(( (\num2[2]~input_o  & \num1[3]~input_o ) ) + ( GND ) + ( \FPGA_ALU|MULT_INST|Add1~38  ))
+
+	.dataa(gnd),
+	.datab(!\num2[2]~input_o ),
+	.datac(!\num1[3]~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~38 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~41_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~42 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~41 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~41 .lut_mask = 64'h0000FFFF00000303;
+defparam \FPGA_ALU|MULT_INST|Add1~41 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y20_N12
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~45 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~45_sumout  = SUM(( GND ) + ( GND ) + ( \FPGA_ALU|MULT_INST|Add1~42  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~42 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~45_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~45 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~45 .lut_mask = 64'h0000FFFF00000000;
+defparam \FPGA_ALU|MULT_INST|Add1~45 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N39
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~13 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~13_sumout  = SUM(( \FPGA_ALU|MULT_INST|Add1~37_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~5_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~10  ))
+// \FPGA_ALU|MULT_INST|Add1~14  = CARRY(( \FPGA_ALU|MULT_INST|Add1~37_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~5_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~10  ))
+
+	.dataa(!\FPGA_ALU|MULT_INST|Add0~5_sumout ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!\FPGA_ALU|MULT_INST|Add1~37_sumout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~10 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~13_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~14 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~13 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~13 .lut_mask = 64'h0000AAAA000000FF;
+defparam \FPGA_ALU|MULT_INST|Add1~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N42
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~17 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~17_sumout  = SUM(( \FPGA_ALU|MULT_INST|Add1~41_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~9_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~14  ))
+// \FPGA_ALU|MULT_INST|Add1~18  = CARRY(( \FPGA_ALU|MULT_INST|Add1~41_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~9_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~14  ))
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|MULT_INST|Add0~9_sumout ),
+	.datac(!\FPGA_ALU|MULT_INST|Add1~41_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~14 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~17_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~18 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~17 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~17 .lut_mask = 64'h0000CCCC00000F0F;
+defparam \FPGA_ALU|MULT_INST|Add1~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N45
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~21 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~21_sumout  = SUM(( \FPGA_ALU|MULT_INST|Add1~45_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~13_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~18  ))
+// \FPGA_ALU|MULT_INST|Add1~22  = CARRY(( \FPGA_ALU|MULT_INST|Add1~45_sumout  ) + ( \FPGA_ALU|MULT_INST|Add0~13_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~18  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|MULT_INST|Add1~45_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|MULT_INST|Add0~13_sumout ),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~18 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~21_sumout ),
+	.cout(\FPGA_ALU|MULT_INST|Add1~22 ),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~21 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~21 .lut_mask = 64'h0000FF0000000F0F;
+defparam \FPGA_ALU|MULT_INST|Add1~21 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N48
+cyclonev_lcell_comb \FPGA_ALU|MULT_INST|Add1~25 (
+// Equation(s):
+// \FPGA_ALU|MULT_INST|Add1~25_sumout  = SUM(( GND ) + ( \FPGA_ALU|MULT_INST|Add0~17_sumout  ) + ( \FPGA_ALU|MULT_INST|Add1~22  ))
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|MULT_INST|Add0~17_sumout ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\FPGA_ALU|MULT_INST|Add1~22 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\FPGA_ALU|MULT_INST|Add1~25_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|MULT_INST|Add1~25 .extended_lut = "off";
+defparam \FPGA_ALU|MULT_INST|Add1~25 .lut_mask = 64'h0000CCCC00000000;
+defparam \FPGA_ALU|MULT_INST|Add1~25 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y20_N18
+cyclonev_lcell_comb \FPGA_ALU|Mux4~1 (
+// Equation(s):
+// \FPGA_ALU|Mux4~1_combout  = ( \FPGA_ALU|MULT_INST|Add1~21_sumout  & ( \FPGA_ALU|MULT_INST|Add1~13_sumout  & ( (!\num1[0]~input_o  & \op[0]~input_o ) ) ) ) # ( !\FPGA_ALU|MULT_INST|Add1~21_sumout  & ( \FPGA_ALU|MULT_INST|Add1~13_sumout  & ( 
+// (!\num1[0]~input_o  & \op[0]~input_o ) ) ) ) # ( \FPGA_ALU|MULT_INST|Add1~21_sumout  & ( !\FPGA_ALU|MULT_INST|Add1~13_sumout  & ( (!\num1[0]~input_o  & \op[0]~input_o ) ) ) ) # ( !\FPGA_ALU|MULT_INST|Add1~21_sumout  & ( !\FPGA_ALU|MULT_INST|Add1~13_sumout 
+//  & ( (!\op[0]~input_o  & (((!\FPGA_ALU|MULT_INST|Add1~25_sumout  & !\FPGA_ALU|MULT_INST|Add1~17_sumout )))) # (\op[0]~input_o  & (!\num1[0]~input_o )) ) ) )
+
+	.dataa(!\num1[0]~input_o ),
+	.datab(!\op[0]~input_o ),
+	.datac(!\FPGA_ALU|MULT_INST|Add1~25_sumout ),
+	.datad(!\FPGA_ALU|MULT_INST|Add1~17_sumout ),
+	.datae(!\FPGA_ALU|MULT_INST|Add1~21_sumout ),
+	.dataf(!\FPGA_ALU|MULT_INST|Add1~13_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux4~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux4~1 .extended_lut = "off";
+defparam \FPGA_ALU|Mux4~1 .lut_mask = 64'hE222222222222222;
+defparam \FPGA_ALU|Mux4~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y18_N51
+cyclonev_lcell_comb \FPGA_ALU|Mux4~3 (
+// Equation(s):
+// \FPGA_ALU|Mux4~3_combout  = ( \FPGA_ALU|Mux4~1_combout  & ( (\op[3]~input_o  & (\op[1]~input_o  & \FPGA_ALU|Mux4~2_combout )) ) ) # ( !\FPGA_ALU|Mux4~1_combout  & ( (\op[3]~input_o  & ((!\op[1]~input_o  & (!\op[2]~input_o )) # (\op[1]~input_o  & 
+// ((\FPGA_ALU|Mux4~2_combout ))))) ) )
+
+	.dataa(!\op[2]~input_o ),
+	.datab(!\op[3]~input_o ),
+	.datac(!\op[1]~input_o ),
+	.datad(!\FPGA_ALU|Mux4~2_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux4~1_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux4~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux4~3 .extended_lut = "off";
+defparam \FPGA_ALU|Mux4~3 .lut_mask = 64'h2023202300030003;
+defparam \FPGA_ALU|Mux4~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X88_Y18_N57
+cyclonev_lcell_comb \FPGA_ALU|Equal3~1 (
+// Equation(s):
+// \FPGA_ALU|Equal3~1_combout  = ( \FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout  & ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout  & !\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ) ) ) # ( 
+// !\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout  & ( (!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & (!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout )) # 
+// (\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout  & ((!\num1[0]~input_o ))) ) )
+
+	.dataa(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~17_sumout ),
+	.datab(gnd),
+	.datac(!\FPGA_ALU|Mod0|auto_generated|divider|divider|op_4~1_sumout ),
+	.datad(!\num1[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mod0|auto_generated|divider|divider|StageOut[15]~6_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Equal3~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Equal3~1 .extended_lut = "off";
+defparam \FPGA_ALU|Equal3~1 .lut_mask = 64'hAFA0AFA0A0A0A0A0;
+defparam \FPGA_ALU|Equal3~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X87_Y18_N12
+cyclonev_lcell_comb \FPGA_ALU|Mux4~4 (
+// Equation(s):
+// \FPGA_ALU|Mux4~4_combout  = ( \op[0]~input_o  & ( \FPGA_ALU|Equal3~1_combout  & ( ((!\FPGA_ALU|Equal3~0_combout  & \FPGA_ALU|Mux4~0_combout )) # (\FPGA_ALU|Mux4~3_combout ) ) ) ) # ( !\op[0]~input_o  & ( \FPGA_ALU|Equal3~1_combout  & ( 
+// \FPGA_ALU|Mux4~3_combout  ) ) ) # ( \op[0]~input_o  & ( !\FPGA_ALU|Equal3~1_combout  & ( (\FPGA_ALU|Mux4~3_combout ) # (\FPGA_ALU|Mux4~0_combout ) ) ) ) # ( !\op[0]~input_o  & ( !\FPGA_ALU|Equal3~1_combout  & ( \FPGA_ALU|Mux4~3_combout  ) ) )
+
+	.dataa(!\FPGA_ALU|Equal3~0_combout ),
+	.datab(!\FPGA_ALU|Mux4~0_combout ),
+	.datac(!\FPGA_ALU|Mux4~3_combout ),
+	.datad(gnd),
+	.datae(!\op[0]~input_o ),
+	.dataf(!\FPGA_ALU|Equal3~1_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|Mux4~4_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|Mux4~4 .extended_lut = "off";
+defparam \FPGA_ALU|Mux4~4 .lut_mask = 64'h0F0F3F3F0F0F2F2F;
+defparam \FPGA_ALU|Mux4~4 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N12
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr6~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr6~0_combout  = ( \FPGA_ALU|Mux1~2_combout  & ( (!\FPGA_ALU|Mux2~3_combout  & (!\FPGA_ALU|Mux0~2_combout  $ (\FPGA_ALU|Mux3~3_combout ))) ) ) # ( !\FPGA_ALU|Mux1~2_combout  & ( (\FPGA_ALU|Mux3~3_combout  & 
+// (!\FPGA_ALU|Mux0~2_combout  $ (\FPGA_ALU|Mux2~3_combout ))) ) )
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|Mux0~2_combout ),
+	.datac(!\FPGA_ALU|Mux2~3_combout ),
+	.datad(!\FPGA_ALU|Mux3~3_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr6~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr6~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr6~0 .lut_mask = 64'h00C300C3C030C030;
+defparam \FPGA_ALU|display_unidades|WideOr6~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N15
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr5~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr5~0_combout  = ( \FPGA_ALU|Mux1~2_combout  & ( (!\FPGA_ALU|Mux2~3_combout  & (!\FPGA_ALU|Mux0~2_combout  $ (!\FPGA_ALU|Mux3~3_combout ))) # (\FPGA_ALU|Mux2~3_combout  & ((!\FPGA_ALU|Mux3~3_combout ) # 
+// (\FPGA_ALU|Mux0~2_combout ))) ) ) # ( !\FPGA_ALU|Mux1~2_combout  & ( (\FPGA_ALU|Mux2~3_combout  & (\FPGA_ALU|Mux0~2_combout  & \FPGA_ALU|Mux3~3_combout )) ) )
+
+	.dataa(!\FPGA_ALU|Mux2~3_combout ),
+	.datab(!\FPGA_ALU|Mux0~2_combout ),
+	.datac(gnd),
+	.datad(!\FPGA_ALU|Mux3~3_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr5~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr5~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr5~0 .lut_mask = 64'h0011001177997799;
+defparam \FPGA_ALU|display_unidades|WideOr5~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N18
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr4~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr4~0_combout  = ( \FPGA_ALU|Mux1~2_combout  & ( (\FPGA_ALU|Mux0~2_combout  & ((!\FPGA_ALU|Mux3~3_combout ) # (\FPGA_ALU|Mux2~3_combout ))) ) ) # ( !\FPGA_ALU|Mux1~2_combout  & ( (\FPGA_ALU|Mux2~3_combout  & 
+// (!\FPGA_ALU|Mux0~2_combout  & !\FPGA_ALU|Mux3~3_combout )) ) )
+
+	.dataa(!\FPGA_ALU|Mux2~3_combout ),
+	.datab(!\FPGA_ALU|Mux0~2_combout ),
+	.datac(!\FPGA_ALU|Mux3~3_combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr4~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr4~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr4~0 .lut_mask = 64'h4040404031313131;
+defparam \FPGA_ALU|display_unidades|WideOr4~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N21
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr3~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr3~0_combout  = ( \FPGA_ALU|Mux1~2_combout  & ( (!\FPGA_ALU|Mux2~3_combout  & (!\FPGA_ALU|Mux0~2_combout  & !\FPGA_ALU|Mux3~3_combout )) # (\FPGA_ALU|Mux2~3_combout  & ((\FPGA_ALU|Mux3~3_combout ))) ) ) # ( 
+// !\FPGA_ALU|Mux1~2_combout  & ( (!\FPGA_ALU|Mux2~3_combout  & (!\FPGA_ALU|Mux0~2_combout  & \FPGA_ALU|Mux3~3_combout )) # (\FPGA_ALU|Mux2~3_combout  & (\FPGA_ALU|Mux0~2_combout  & !\FPGA_ALU|Mux3~3_combout )) ) )
+
+	.dataa(!\FPGA_ALU|Mux2~3_combout ),
+	.datab(!\FPGA_ALU|Mux0~2_combout ),
+	.datac(gnd),
+	.datad(!\FPGA_ALU|Mux3~3_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr3~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr3~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr3~0 .lut_mask = 64'h1188118888558855;
+defparam \FPGA_ALU|display_unidades|WideOr3~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N57
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr2~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr2~0_combout  = ( \FPGA_ALU|Mux1~2_combout  & ( (!\FPGA_ALU|Mux0~2_combout  & ((!\FPGA_ALU|Mux2~3_combout ) # (\FPGA_ALU|Mux3~3_combout ))) ) ) # ( !\FPGA_ALU|Mux1~2_combout  & ( (\FPGA_ALU|Mux3~3_combout  & 
+// ((!\FPGA_ALU|Mux2~3_combout ) # (!\FPGA_ALU|Mux0~2_combout ))) ) )
+
+	.dataa(!\FPGA_ALU|Mux2~3_combout ),
+	.datab(!\FPGA_ALU|Mux0~2_combout ),
+	.datac(gnd),
+	.datad(!\FPGA_ALU|Mux3~3_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr2~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr2~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr2~0 .lut_mask = 64'h00EE00EE88CC88CC;
+defparam \FPGA_ALU|display_unidades|WideOr2~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N24
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr1~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr1~0_combout  = ( \FPGA_ALU|Mux2~3_combout  & ( (!\FPGA_ALU|Mux0~2_combout  & ((!\FPGA_ALU|Mux1~2_combout ) # (\FPGA_ALU|Mux3~3_combout ))) ) ) # ( !\FPGA_ALU|Mux2~3_combout  & ( (\FPGA_ALU|Mux3~3_combout  & 
+// (!\FPGA_ALU|Mux1~2_combout  $ (\FPGA_ALU|Mux0~2_combout ))) ) )
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|Mux1~2_combout ),
+	.datac(!\FPGA_ALU|Mux3~3_combout ),
+	.datad(!\FPGA_ALU|Mux0~2_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux2~3_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr1~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr1~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr1~0 .lut_mask = 64'h0C030C03CF00CF00;
+defparam \FPGA_ALU|display_unidades|WideOr1~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X85_Y18_N54
+cyclonev_lcell_comb \FPGA_ALU|display_unidades|WideOr0~0 (
+// Equation(s):
+// \FPGA_ALU|display_unidades|WideOr0~0_combout  = ( \FPGA_ALU|Mux1~2_combout  & ( (!\FPGA_ALU|Mux0~2_combout  & ((!\FPGA_ALU|Mux2~3_combout ) # (!\FPGA_ALU|Mux3~3_combout ))) # (\FPGA_ALU|Mux0~2_combout  & ((\FPGA_ALU|Mux3~3_combout ) # 
+// (\FPGA_ALU|Mux2~3_combout ))) ) ) # ( !\FPGA_ALU|Mux1~2_combout  & ( (\FPGA_ALU|Mux2~3_combout ) # (\FPGA_ALU|Mux0~2_combout ) ) )
+
+	.dataa(gnd),
+	.datab(!\FPGA_ALU|Mux0~2_combout ),
+	.datac(!\FPGA_ALU|Mux2~3_combout ),
+	.datad(!\FPGA_ALU|Mux3~3_combout ),
+	.datae(gnd),
+	.dataf(!\FPGA_ALU|Mux1~2_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\FPGA_ALU|display_unidades|WideOr0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \FPGA_ALU|display_unidades|WideOr0~0 .extended_lut = "off";
+defparam \FPGA_ALU|display_unidades|WideOr0~0 .lut_mask = 64'h3F3F3F3FCFF3CFF3;
+defparam \FPGA_ALU|display_unidades|WideOr0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X84_Y35_N0
 cyclonev_lcell_comb \~QUARTUS_CREATED_GND~I (
 // Equation(s):
 

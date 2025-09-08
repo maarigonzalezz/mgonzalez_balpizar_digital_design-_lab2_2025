@@ -7,7 +7,7 @@ module ALU #(parameter n = 4)(
 	// Resultados para cada operación
 	logic [2*n-1:0] mult_result;
 	logic [n-1:0] sum_result, rest_result, div_result, mod_result;
-	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;	
+	logic [n-1:0] and_result, or_result, xor_result, sleft_result, sright_result;
 	
 	// Instancia de Suma
 	    nbit_adder #(

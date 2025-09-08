@@ -113,6 +113,14 @@ module ALU_tb;
 	 display_7seg(seg);
     check_result();
 	 
+	 num1 = 4'b0001; num2 = 4'b1111; op = 4'b0001;
+    expected_result = 4'b0010;  // Resultado negativo
+    expected_N = 1; expected_Z = 0; expected_C = 1; expected_V = 0;
+    #10;
+	 $display("%0t\t%b\t%d\t%d\t%d\t%b %b %b %b", $time, op, num1, num2, result, Z, N, V, C);	
+	 display_7seg(seg);
+    check_result();
+	 
 	 // ---------------------------- Prueba de AND -------------------------------
 	 $display("---------------AND---------------");
 	 $display("Tiempo\tOP\tNum1\tNum2\tResult\tZ N V C");
@@ -207,7 +215,7 @@ module ALU_tb;
 
 	 num1 = 4'b1010; num2 = 4'b0001; op = 4'b0110;
     expected_result = 4'b0101;  // Desplazamiento a la derecha
-    expected_N = 0; expected_Z = 0; expected_C = 1; expected_V = 0;
+    expected_N = 0; expected_Z = 0; expected_C = 0; expected_V = 0;
     #10;
 	 $display("%0t\t%b\t%d\t%d\t%d\t%b %b %b %b", $time, op, num1, num2, result, Z, N, V, C);	
 	 display_7seg(seg);

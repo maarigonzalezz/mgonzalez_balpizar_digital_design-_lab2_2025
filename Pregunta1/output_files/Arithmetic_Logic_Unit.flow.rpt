@@ -1,5 +1,5 @@
 Flow report for Arithmetic_Logic_Unit
-Sun Sep 07 18:02:19 2025
+Sun Sep 07 19:56:02 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,10 +41,10 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Sun Sep 07 18:02:19 2025       ;
+; Flow Status                 ; Successful - Sun Sep 07 19:56:02 2025       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; Arithmetic_Logic_Unit                       ;
-; Top-level Entity Name       ; ALU                                         ;
+; Top-level Entity Name       ; Top_ALU                                     ;
 ; Family                      ; Cyclone V                                   ;
 ; Device                      ; 5CSXFC6D6F31C6                              ;
 ; Timing Models               ; Final                                       ;
@@ -63,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+-----------------------+
 ; Option            ; Setting               ;
 +-------------------+-----------------------+
-; Start date & time ; 09/07/2025 18:02:13   ;
+; Start date & time ; 09/07/2025 19:55:52   ;
 ; Main task         ; Compilation           ;
 ; Revision Name     ; Arithmetic_Logic_Unit ;
 +-------------------+-----------------------+
@@ -74,7 +74,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
 ; Assignment Name                      ; Value                                  ; Default Value         ; Entity Name ; Section Id                        ;
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID                ; 237785193706138.175728973337132        ; --                    ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID                ; 237785193706138.175729655236500        ; --                    ; --          ; --                                ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --                    ; --          ; ALU_tb                            ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --                    ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST      ; Off                                    ; --                    ; --          ; eda_board_design_boundary_scan    ;
@@ -90,13 +90,13 @@ https://fpgasoftware.intel.com/eula.
 ; EDA_TIME_SCALE                       ; 1 ps                                   ; --                    ; --          ; eda_simulation                    ;
 ; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --                    ; --          ; --                                ;
 ; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --                    ; --          ; --                                ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --                    ; ALU         ; Top                               ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --                    ; ALU         ; Top                               ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --                    ; ALU         ; Top                               ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --                    ; Top_ALU     ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --                    ; Top_ALU     ; Top                               ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --                    ; Top_ALU     ; Top                               ;
 ; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --                    ; --          ; --                                ;
 ; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --                    ; --          ; --                                ;
 ; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --                    ; --          ; --                                ;
-; TOP_LEVEL_ENTITY                     ; ALU                                    ; Arithmetic_Logic_Unit ; --          ; --                                ;
+; TOP_LEVEL_ENTITY                     ; Top_ALU                                ; Arithmetic_Logic_Unit ; --          ; --                                ;
 ; VERILOG_INPUT_VERSION                ; SystemVerilog_2005                     ; Verilog_2001          ; --          ; --                                ;
 ; VERILOG_SHOW_LMF_MAPPING_MESSAGES    ; Off                                    ; --                    ; --          ; --                                ;
 +--------------------------------------+----------------------------------------+-----------------------+-------------+-----------------------------------+
@@ -107,8 +107,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:06     ; 1.0                     ; 4773 MB             ; 00:00:17                           ;
-; Total                  ; 00:00:06     ; --                      ; --                  ; 00:00:17                           ;
+; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 4776 MB             ; 00:00:30                           ;
+; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:30                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

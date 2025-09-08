@@ -1,5 +1,5 @@
 Analysis & Elaboration report for Arithmetic_Logic_Unit
-Sun Sep 07 18:02:19 2025
+Sun Sep 07 19:56:02 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -9,17 +9,17 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   1. Legal Notice
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
-  4. Parameter Settings for User Entity Instance: Top-level Entity: |ALU
-  5. Parameter Settings for User Entity Instance: nbit_adder:SUM_INST
-  6. Parameter Settings for User Entity Instance: nbit_subtractor:u_nbit_sub
-  7. Parameter Settings for User Entity Instance: nbit_multiplier:MULT_INST
+  4. Parameter Settings for User Entity Instance: ALU:FPGA_ALU
+  5. Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_adder:SUM_INST
+  6. Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub
+  7. Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_multiplier:MULT_INST
   8. Analysis & Elaboration Settings
-  9. Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[3].COLS[3].u_bit_mul"
- 10. Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[2].COLS[3].u_bit_mul"
- 11. Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[3].u_bit_mul"
- 12. Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[3].u_bit_mul"
- 13. Port Connectivity Checks: "nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub"
- 14. Port Connectivity Checks: "nbit_adder:SUM_INST"
+  9. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[3].COLS[3].u_bit_mul"
+ 10. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[2].COLS[3].u_bit_mul"
+ 11. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[3].u_bit_mul"
+ 12. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[3].u_bit_mul"
+ 13. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub"
+ 14. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_adder:SUM_INST"
  15. Analysis & Elaboration Messages
  16. Analysis & Elaboration Suppressed Messages
 
@@ -48,10 +48,10 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Sun Sep 07 18:02:19 2025       ;
+; Analysis & Elaboration Status ; Successful - Sun Sep 07 19:56:02 2025       ;
 ; Quartus Prime Version         ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                 ; Arithmetic_Logic_Unit                       ;
-; Top-level Entity Name         ; ALU                                         ;
+; Top-level Entity Name         ; Top_ALU                                     ;
 ; Family                        ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
 ; Total registers               ; N/A until Partition Merge                   ;
@@ -79,43 +79,43 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Top-level Entity: |ALU ;
-+----------------+-------+--------------------------------------------+
-; Parameter Name ; Value ; Type                                       ;
-+----------------+-------+--------------------------------------------+
-; n              ; 4     ; Signed Integer                             ;
-+----------------+-------+--------------------------------------------+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; n              ; 4     ; Signed Integer                   ;
++----------------+-------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: nbit_adder:SUM_INST ;
-+----------------+-------+-----------------------------------------+
-; Parameter Name ; Value ; Type                                    ;
-+----------------+-------+-----------------------------------------+
-; N              ; 4     ; Signed Integer                          ;
-+----------------+-------+-----------------------------------------+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_adder:SUM_INST ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 4     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: nbit_subtractor:u_nbit_sub ;
-+----------------+-------+------------------------------------------------+
-; Parameter Name ; Value ; Type                                           ;
-+----------------+-------+------------------------------------------------+
-; n              ; 4     ; Signed Integer                                 ;
-+----------------+-------+------------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: nbit_multiplier:MULT_INST ;
-+----------------+-------+-----------------------------------------------+
-; Parameter Name ; Value ; Type                                          ;
-+----------------+-------+-----------------------------------------------+
-; N              ; 4     ; Signed Integer                                ;
-+----------------+-------+-----------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_multiplier:MULT_INST ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; N              ; 4     ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -125,7 +125,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Option                                                                          ; Setting            ; Default Value         ;
 +---------------------------------------------------------------------------------+--------------------+-----------------------+
 ; Device                                                                          ; 5CSXFC6D6F31C6     ;                       ;
-; Top-level entity name                                                           ; ALU                ; Arithmetic_Logic_Unit ;
+; Top-level entity name                                                           ; Top_ALU            ; Arithmetic_Logic_Unit ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V             ;
 ; Verilog Show LMF Mapping Messages                                               ; Off                ;                       ;
 ; Verilog Version                                                                 ; SystemVerilog_2005 ; Verilog_2001          ;
@@ -208,7 +208,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[3].COLS[3].u_bit_mul"                 ;
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[3].COLS[3].u_bit_mul"    ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -217,7 +217,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[2].COLS[3].u_bit_mul"                 ;
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[2].COLS[3].u_bit_mul"    ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -226,7 +226,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[3].u_bit_mul"                 ;
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[3].u_bit_mul"    ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -235,7 +235,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[3].u_bit_mul"                 ;
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[3].u_bit_mul"    ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -243,22 +243,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub" ;
-+------+-------+----------+-------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                           ;
-+------+-------+----------+-------------------------------------------------------------------+
-; Bin  ; Input ; Info     ; Stuck at GND                                                      ;
-+------+-------+----------+-------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub" ;
++------+-------+----------+--------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                        ;
++------+-------+----------+--------------------------------------------------------------------------------+
+; Bin  ; Input ; Info     ; Stuck at GND                                                                   ;
++------+-------+----------+--------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------+
-; Port Connectivity Checks: "nbit_adder:SUM_INST" ;
-+------+-------+----------+-----------------------+
-; Port ; Type  ; Severity ; Details               ;
-+------+-------+----------+-----------------------+
-; Cin  ; Input ; Info     ; Stuck at GND          ;
-+------+-------+----------+-----------------------+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_adder:SUM_INST" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; Cin  ; Input ; Info     ; Stuck at GND                       ;
++------+-------+----------+------------------------------------+
 
 
 +---------------------------------+
@@ -267,7 +267,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sun Sep 07 18:02:13 2025
+    Info: Processing started: Sun Sep 07 19:55:51 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Arithmetic_Logic_Unit -c Arithmetic_Logic_Unit --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -289,22 +289,25 @@ Info (12021): Found 1 design units, including 1 entities, in source file 1bit_mu
     Info (12023): Found entity 1: bit_multiplier File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file nbit_multiplier.sv
     Info (12023): Found entity 1: nbit_multiplier File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file top_alu.sv
+    Info (12023): Found entity 1: Top_ALU File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(20): created implicit net for "carry_sum" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 20
-Info (12127): Elaborating entity "ALU" for the top level hierarchy
+Info (12127): Elaborating entity "Top_ALU" for the top level hierarchy
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:FPGA_ALU" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv Line: 23
 Warning (10230): Verilog HDL assignment warning at ALU.sv(112): truncated value with size 32 to match size of target (1) File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 112
-Info (12128): Elaborating entity "nbit_adder" for hierarchy "nbit_adder:SUM_INST" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 21
-Info (12128): Elaborating entity "full_adder_1bit" for hierarchy "nbit_adder:SUM_INST|full_adder_1bit:adder_loop[0].FA_inst" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv Line: 25
-Info (12128): Elaborating entity "nbit_subtractor" for hierarchy "nbit_subtractor:u_nbit_sub" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 33
-Info (12128): Elaborating entity "bit_subtractor" for hierarchy "nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv Line: 21
-Info (12128): Elaborating entity "nbit_multiplier" for hierarchy "nbit_multiplier:MULT_INST" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 44
-Info (12128): Elaborating entity "bit_multiplier" for hierarchy "nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[0].u_bit_mul" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv Line: 29
-Info (12128): Elaborating entity "BinTo7Seg" for hierarchy "BinTo7Seg:display_unidades" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 79
+Info (12128): Elaborating entity "nbit_adder" for hierarchy "ALU:FPGA_ALU|nbit_adder:SUM_INST" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 21
+Info (12128): Elaborating entity "full_adder_1bit" for hierarchy "ALU:FPGA_ALU|nbit_adder:SUM_INST|full_adder_1bit:adder_loop[0].FA_inst" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv Line: 25
+Info (12128): Elaborating entity "nbit_subtractor" for hierarchy "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 33
+Info (12128): Elaborating entity "bit_subtractor" for hierarchy "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv Line: 21
+Info (12128): Elaborating entity "nbit_multiplier" for hierarchy "ALU:FPGA_ALU|nbit_multiplier:MULT_INST" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 44
+Info (12128): Elaborating entity "bit_multiplier" for hierarchy "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[0].u_bit_mul" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv Line: 29
+Info (12128): Elaborating entity "BinTo7Seg" for hierarchy "ALU:FPGA_ALU|BinTo7Seg:display_unidades" File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 79
 Info (144001): Generated suppressed messages file C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/output_files/Arithmetic_Logic_Unit.map.smsg
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4773 megabytes
-    Info: Processing ended: Sun Sep 07 18:02:19 2025
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Peak virtual memory: 4776 megabytes
+    Info: Processing ended: Sun Sep 07 19:56:02 2025
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:30
 
 
 +--------------------------------------------+
