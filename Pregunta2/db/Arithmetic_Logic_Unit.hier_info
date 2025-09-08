@@ -1,0 +1,239 @@
+|frequency_measurement
+clk => clk.IN7
+reset => reset.IN7
+a[0] => a[0].IN1
+a[1] => a[1].IN1
+b[0] => b[0].IN1
+b[1] => b[1].IN1
+opcode[0] => opcode[0].IN1
+opcode[1] => opcode[1].IN1
+opcode[2] => opcode[2].IN1
+opcode[3] => opcode[3].IN1
+result[0] <= register:reg_out_inst.q
+result[1] <= register:reg_out_inst.q
+N <= register:reg_N_inst.q
+Z <= register:reg_Z_inst.q
+C <= register:reg_C_inst.q
+V <= register:reg_V_inst.q
+
+
+|frequency_measurement|register:reg_a_inst
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+reset => q[0]~reg0.ACLR
+reset => q[1]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|register:reg_b_inst
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+reset => q[0]~reg0.ACLR
+reset => q[1]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance
+op[0] => Mux0.IN9
+op[0] => Mux1.IN9
+op[0] => Mux2.IN15
+op[0] => Equal2.IN0
+op[1] => Mux0.IN8
+op[1] => Mux1.IN8
+op[1] => Mux2.IN14
+op[1] => Equal2.IN3
+op[2] => Mux0.IN7
+op[2] => Mux1.IN7
+op[2] => Mux2.IN13
+op[2] => Equal2.IN2
+op[3] => Mux0.IN6
+op[3] => Mux1.IN6
+op[3] => Mux2.IN12
+op[3] => Equal2.IN1
+num1[0] => num1[0].IN3
+num1[1] => num1[1].IN3
+num2[0] => num2[0].IN3
+num2[1] => num2[1].IN3
+result[0] <= result[0].DB_MAX_OUTPUT_PORT_TYPE
+result[1] <= result[1].DB_MAX_OUTPUT_PORT_TYPE
+Z <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+N <= N.DB_MAX_OUTPUT_PORT_TYPE
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+C <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+seg[0] <= BinTo7Seg:display_unidades.seg
+seg[1] <= BinTo7Seg:display_unidades.seg
+seg[2] <= BinTo7Seg:display_unidades.seg
+seg[3] <= BinTo7Seg:display_unidades.seg
+seg[4] <= BinTo7Seg:display_unidades.seg
+seg[5] <= BinTo7Seg:display_unidades.seg
+seg[6] <= BinTo7Seg:display_unidades.seg
+
+
+|frequency_measurement|ALU:alu_instance|nbit_adder:SUM_INST
+A[0] => A[0].IN1
+A[1] => A[1].IN1
+B[0] => B[0].IN1
+B[1] => B[1].IN1
+Cin => carry[0].IN1
+Sum[0] <= full_adder_1bit:adder_loop[0].FA_inst.Sum
+Sum[1] <= full_adder_1bit:adder_loop[1].FA_inst.Sum
+Cout <= full_adder_1bit:adder_loop[1].FA_inst.Cout
+
+
+|frequency_measurement|ALU:alu_instance|nbit_adder:SUM_INST|full_adder_1bit:adder_loop[0].FA_inst
+A => Sum.IN0
+A => Cout.IN0
+B => Sum.IN1
+B => Cout.IN1
+Cin => Sum.IN1
+Cin => Cout.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_adder:SUM_INST|full_adder_1bit:adder_loop[1].FA_inst
+A => Sum.IN0
+A => Cout.IN0
+B => Sum.IN1
+B => Cout.IN1
+Cin => Sum.IN1
+Cin => Cout.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_subtractor:u_nbit_sub
+A[0] => A[0].IN1
+A[1] => A[1].IN1
+B[0] => B[0].IN1
+B[1] => B[1].IN1
+D[0] <= bit_subtractor:SUB_BITS[0].u_bit_sub.D
+D[1] <= bit_subtractor:SUB_BITS[1].u_bit_sub.D
+Bout <= bit_subtractor:SUB_BITS[1].u_bit_sub.Bout
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub
+A => D.IN0
+A => Bout.IN0
+B => D.IN1
+B => Bout.IN1
+Bin => D.IN1
+Bin => Bout.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[1].u_bit_sub
+A => D.IN0
+A => Bout.IN0
+B => D.IN1
+B => Bout.IN1
+Bin => D.IN1
+Bin => Bout.IN1
+D <= D.DB_MAX_OUTPUT_PORT_TYPE
+Bout <= Bout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_multiplier:MULT_INST
+A[0] => A[0].IN2
+A[1] => A[1].IN2
+B[0] => B[0].IN2
+B[1] => B[1].IN2
+Product[0] <= bit_multiplier:ROWS[0].COLS[0].u_bit_mul.P
+Product[1] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+Product[2] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+Product[3] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[0].u_bit_mul
+A => P.IN0
+B => P.IN1
+Cin => Cout.IN1
+P <= P.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[1].u_bit_mul
+A => P.IN0
+B => P.IN1
+Cin => Cout.IN1
+P <= P.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[0].u_bit_mul
+A => P.IN0
+B => P.IN1
+Cin => Cout.IN1
+P <= P.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[1].u_bit_mul
+A => P.IN0
+B => P.IN1
+Cin => Cout.IN1
+P <= P.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|ALU:alu_instance|BinTo7Seg:display_unidades
+bin[0] => Decoder0.IN3
+bin[1] => Decoder0.IN2
+bin[2] => Decoder0.IN1
+bin[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|register:reg_out_inst
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+reset => q[0]~reg0.ACLR
+reset => q[1]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|register:reg_N_inst
+clk => q[0]~reg0.CLK
+reset => q[0]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|register:reg_Z_inst
+clk => q[0]~reg0.CLK
+reset => q[0]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|register:reg_C_inst
+clk => q[0]~reg0.CLK
+reset => q[0]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|frequency_measurement|register:reg_V_inst
+clk => q[0]~reg0.CLK
+reset => q[0]~reg0.ACLR
+d[0] => q[0]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
