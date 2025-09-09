@@ -10,111 +10,111 @@
 # Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/BinTo7Seg.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:17 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/BinTo7Seg.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv 
 # -- Compiling module BinTo7Seg
 # 
 # Top level modules:
 # 	BinTo7Seg
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:01
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv 
 # -- Compiling module ALU
 # 
 # Top level modules:
 # 	ALU
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv 
 # -- Compiling module nbit_adder
 # 
 # Top level modules:
 # 	nbit_adder
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv 
 # -- Compiling module nbit_subtractor
 # 
 # Top level modules:
 # 	nbit_subtractor
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_subtractor.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_subtractor.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv 
 # -- Compiling module bit_subtractor
 # 
 # Top level modules:
 # 	bit_subtractor
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv 
 # -- Compiling module full_adder_1bit
 # 
 # Top level modules:
 # 	full_adder_1bit
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv 
+# Start time: 19:04:57 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv 
 # -- Compiling module bit_multiplier
 # 
 # Top level modules:
 # 	bit_multiplier
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:57 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:18 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv 
+# Start time: 19:04:58 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv 
 # -- Compiling module nbit_multiplier
 # 
 # Top level modules:
 # 	nbit_multiplier
-# End time: 21:27:18 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:58 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:19 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv 
+# Start time: 19:04:58 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv 
 # -- Compiling module Top_ALU
 # 
 # Top level modules:
 # 	Top_ALU
-# End time: 21:27:19 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:58 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vlog -sv -work work +incdir+C:/Users/gonza/Desktop/lab2\ taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1 {C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv}
+# vlog -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1 {C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 21:27:19 on Sep 07,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1" C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv 
+# Start time: 19:04:58 on Sep 08,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1" C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv 
 # -- Compiling module ALU_tb
 # 
 # Top level modules:
 # 	ALU_tb
-# End time: 21:27:19 on Sep 07,2025, Elapsed time: 0:00:00
+# End time: 19:04:58 on Sep 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  ALU_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" ALU_tb 
-# Start time: 21:27:19 on Sep 07,2025
+# Start time: 19:04:59 on Sep 08,2025
 # Loading sv_std.std
 # Loading work.ALU_tb
 # Loading work.ALU
@@ -140,9 +140,8 @@
 # 0
 # ---------------RESTA---------------
 # Tiempo	OP	Num1	Num2	Result	Z N V C
-# 30000	0001	 7	 3	 4	0 0 1 0
+# 30000	0001	 7	 3	 4	0 0 0 0
 # 4
-# Error: bandera V incorrecta: Esperado 0, obtenido 1
 # 40000	0001	 2	 4	14	0 1 0 1
 # E
 # 50000	0001	 1	15	 2	0 0 1 1
@@ -195,8 +194,8 @@
 # 0
 # 210000	1001	10	 3	 1	0 0 0 0
 # 1
-# ** Note: $stop    : C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv(290)
+# ** Note: $stop    : C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv(290)
 #    Time: 210 ns  Iteration: 0  Instance: /ALU_tb
-# Break in Module ALU_tb at C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv line 290
-# End time: 21:29:46 on Sep 07,2025, Elapsed time: 0:02:27
+# Break in Module ALU_tb at C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv line 290
+# End time: 19:06:10 on Sep 08,2025, Elapsed time: 0:01:11
 # Errors: 0, Warnings: 0

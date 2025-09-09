@@ -81,9 +81,22 @@ module ALU #(parameter n = 4)(
 			.seg(seg));
 	 
     // ---------------------- Flags ----------------------
-	 assign V = (op == 4'b0001) & (num1 - num2 < -8);
-	 
+
     always_comb begin
+	 
+			//Aca se calcula el overflow solamente para el caso de la resta
+	 
+			// A y B de 4 bits
+			logic signed [4:0] real_result;
+			real_result = {1'b0, num1} - {1'b0, num2}; // ampliar a 5 bits para calcular resultado real
+
+			// overflow si el resultado real es menor que -7 o mayor que 7
+			if ((op == 4'b0001) && (real_result < -7 || real_result > 7))
+				 V = 1;
+			else
+				 V = 0;
+					 
+	 
         // Zero flag
         Z = (result == 0);
 
@@ -100,7 +113,8 @@ module ALU #(parameter n = 4)(
             4'b0000: C = carry_sum;
 				// RESTA
 				// Se toma como carry el borrow final
-            4'b0001: C = borrow_final; 
+            4'b0001: C = borrow_final;
+					
 				// SHIFT LEFT
 				// Se toma como carry el bit perdido 
             4'b0101: C = num1[n-1];

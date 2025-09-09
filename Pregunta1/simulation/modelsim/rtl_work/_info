@@ -8,56 +8,56 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/simulation/modelsim
+Z0 dC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/simulation/modelsim
 vALU
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1757302038
+Z2 !s110 1757379897
 !i10b 1
-!s100 G9n4fJko[<hF2:F:4Sh4E2
+!s100 l<TXe;SU@^Q7gS?0hTVHn2
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IC>3A3`8Q1dZ:]30JzbEMo2
+IeLz1=8UM;LFSb@:;Y3Qkm0
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1757302015
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv
+w1757379882
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv
 !i122 1
-L0 1 125
+L0 1 137
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1757302038.000000
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv|
+Z6 !s108 1757379897.000000
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv|
 !i113 1
 Z7 o-sv -work work
-Z8 !s92 -sv -work work {+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1}
+Z8 !s92 -sv -work work +incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1
 Z9 tCvgOpt 0
 n@a@l@u
 vALU_tb
 R1
-Z10 !s110 1757302039
+Z10 !s110 1757379898
 !i10b 1
 !s100 cVnMJFTQ8IjciNbI@[nL12
 R3
-Iz3fS4OEe6zMeVhC@ofN_[1
+Id5KJo;8GlZbg2jzXTQ]T_3
 R4
 S1
 R0
-w1757299458
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv
+Z11 w1757374396
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv
 !i122 9
 L0 2 295
 R5
 r1
 !s85 0
 31
-Z11 !s108 1757302039.000000
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU_tb.sv|
+Z12 !s108 1757379898.000000
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv|
 !i113 1
 R7
 R8
@@ -69,22 +69,22 @@ R2
 !i10b 1
 !s100 bQ54`GSSbfV`?LW@?Jbl21
 R3
-IM]b`d3[KAB0>L=H6E9F542
+IY2mGGdmdD609JfY=NXIlV1
 R4
 S1
 R0
-w1757227360
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/BinTo7Seg.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/BinTo7Seg.sv
+w1757228506
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv
 !i122 0
 L0 1 28
 R5
 r1
 !s85 0
 31
-!s108 1757302037.000000
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/BinTo7Seg.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/BinTo7Seg.sv|
+R6
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv|
 !i113 1
 R7
 R8
@@ -96,13 +96,13 @@ R2
 !i10b 1
 !s100 :ZYFXjN_81MR<`UN2bX4V2
 R3
-IjX]oEINUWIAV04Si`aLHf3
+ImnL]mX^Q]HcSPCCBLA7;F1
 R4
 S1
 R0
-Z12 w1757228167
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv
+w1757225287
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv
 !i122 6
 Z13 L0 2 15
 R5
@@ -110,8 +110,8 @@ r1
 !s85 0
 31
 R6
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_multiplier.sv|
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv|
 !i113 1
 R7
 R8
@@ -122,13 +122,13 @@ R2
 !i10b 1
 !s100 :cD>Q:=?oQCAdRQf;I=jz1
 R3
-IZ3MOKZEGTK@CDUF=X42LY1
+ISELMCgcdF[C@RHRe:M1[R3
 R4
 S1
 R0
-w1757220922
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_subtractor.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_subtractor.sv
+w1757220539
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv
 !i122 4
 L0 2 12
 R5
@@ -136,8 +136,8 @@ r1
 !s85 0
 31
 R6
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_subtractor.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/1bit_subtractor.sv|
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv|
 !i113 1
 R7
 R8
@@ -148,13 +148,13 @@ R2
 !i10b 1
 !s100 UQ@UVXTSScn=Hzndg]H5i2
 R3
-I^>>>;WzP0j]kmG>13YV^53
+IzcfF:RhNS9=X4<PeV:]YT2
 R4
 S1
 R0
-Z14 w1757224658
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv
+w1757221616
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv
 !i122 5
 R13
 R5
@@ -162,8 +162,8 @@ r1
 !s85 0
 31
 R6
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/full_adder_1bit.sv|
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv|
 !i113 1
 R7
 R8
@@ -174,13 +174,13 @@ R2
 !i10b 1
 !s100 IAS;Zc?ZKDMDUKQRifjV72
 R3
-IdB=7iMM?oFD>?7Gk6AbDV0
+I>L7FGBGmo99N?N2<R=<FZ1
 R4
 S1
 R0
-R14
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv
+w1757221633
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv
 !i122 2
 L0 2 31
 R5
@@ -188,34 +188,34 @@ r1
 !s85 0
 31
 R6
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_adder.sv|
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv|
 !i113 1
 R7
 R8
 R9
 vnbit_multiplier
 R1
-R2
+R10
 !i10b 1
 !s100 K=n9GRUn]Ud[h<P@?@z9f1
 R3
-IFNPm25Jn6e5]WlQ<3WKUW2
+Iom4ZmCza_jXXZKm5KjgS=0
 R4
 S1
 R0
-R12
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv
+w1757226280
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv
 !i122 7
 L0 2 47
 R5
 r1
 !s85 0
 31
-R6
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_multiplier.sv|
+R12
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv|
 !i113 1
 R7
 R8
@@ -224,24 +224,24 @@ vnbit_subtractor
 R1
 R2
 !i10b 1
-!s100 YXU3Jzf2@fPUL6zW@hY7o1
+!s100 Z9nRP<=X1TfaTOlhKU7BL3
 R3
-ImWcH<W=H9Eg_Nghzhajn71
+IYnP0O7_gD4^b6<m2oYN@H2
 R4
 S1
 R0
-w1757301735
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv
+w1757379759
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv
 !i122 3
-L0 2 30
+L0 2 27
 R5
 r1
 !s85 0
 31
 R6
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/nbit_substractor.sv|
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv|
 !i113 1
 R7
 R8
@@ -252,22 +252,22 @@ R10
 !i10b 1
 !s100 AePLk7L:ocG0cT:SXMNa50
 R3
-I^W`fE9iB_laP6dHO=R_7B0
+IAN264nkT1od2LHd;IgPFM1
 R4
 S1
 R0
-w1757293856
-8C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv
-FC:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv
+R11
+8C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv
+FC:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv
 !i122 8
 L0 1 29
 R5
 r1
 !s85 0
 31
-R11
-!s107 C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1|C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/Top_ALU.sv|
+R12
+!s107 C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1|C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv|
 !i113 1
 R7
 R8

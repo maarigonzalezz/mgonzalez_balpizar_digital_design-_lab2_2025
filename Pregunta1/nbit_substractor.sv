@@ -25,7 +25,4 @@ module nbit_subtractor #(parameter n = 4)(
 
     assign Bout = borrow[n];       // Borrow final
 	 
-	 // Overflow
-    assign V = (A[n-1] ^ B[n-1]) & (A[n-1] ^ D[n-1]);
-	 
 endmodule
