@@ -1,0 +1,58 @@
+// ---------------------- Multiplicador N×N bits usando bit_multiplier ----------------------
+module nbit_multiplier #(
+    parameter N = 4  // Número de bits de los operandos
+)(
+    input  logic [N-1:0] A,          // Multiplicando
+    input  logic [N-1:0] B,          // Multiplicador
+    output logic [2*N-1:0] Product   // Resultado de la multiplicación
+);
+
+    // ------------------- Señales internas -------------------
+    logic [2*N-1:0] sum_rows [N-1:0];     // Suma parcial de cada fila
+    logic [N-1:0][N-1:0] pp;              // Productos parciales
+    logic carry_matrix [N:0][N-1:0];      // Carries entre multiplicadores
+
+    integer i, j;
+
+    // Inicialización de señales
+    initial begin
+        for (i = 0; i < N; i=i+1)
+            for (j = 0; j < N; j=j+1)
+                carry_matrix[i][j] = 0;
+    end
+
+    // ------------------- Generación de productos parciales -------------------
+    generate
+        for (i = 0; i < N; i=i+1) begin : ROWS
+            for (j = 0; j < N; j=j+1) begin : COLS
+                logic P_bit, Cout_bit;
+
+                // Instancia del multiplicador de 1 bit
+                bit_multiplier u_bit_mul (
+                    .A(A[j]),
+                    .B(B[i]),
+                    .Cin(carry_matrix[i][j]),
+                    .P(P_bit),
+                    .Cout(Cout_bit)
+                );
+
+                // Guardamos el producto y carry
+                always_comb begin
+                    pp[i][j] = P_bit;
+                    if (j < N-1)
+                        carry_matrix[i][j+1] = Cout_bit;
+                    else
+                        sum_rows[i][i+j] = Cout_bit; // último carry de la fila
+                end
+            end
+        end
+    endgenerate
+
+    // ------------------- Suma final de filas -------------------
+    always_comb begin
+        Product = 0;
+        for (i = 0; i < N; i=i+1)
+            Product = Product + (pp[i] << i); // desplaza según posición de la fila
+    end
+
+endmodule

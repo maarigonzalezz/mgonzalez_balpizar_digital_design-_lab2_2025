@@ -1,1 +1,2 @@
-Info (10281): Verilog HDL Declaration information at ALU.sv(1): object "n" differs only in case from object "N" in the same scope File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 1
+Info (10281): Verilog HDL Declaration information at ALU.sv(1): object "n" differs only in case from object "N" in the same scope File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 1
+Info (10281): Verilog HDL Declaration information at ALU_tb.sv(4): object "n" differs only in case from object "N" in the same scope File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv Line: 4

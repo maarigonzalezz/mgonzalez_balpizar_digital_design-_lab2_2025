@@ -1,5 +1,5 @@
 Analysis & Elaboration report for Arithmetic_Logic_Unit
-Sun Aug 31 23:51:56 2025
+Mon Sep 08 19:04:48 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -9,10 +9,20 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   1. Legal Notice
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
-  4. Parameter Settings for User Entity Instance: Top-level Entity: |ALU
-  5. Analysis & Elaboration Settings
-  6. Analysis & Elaboration Messages
-  7. Analysis & Elaboration Suppressed Messages
+  4. Parameter Settings for User Entity Instance: ALU:FPGA_ALU
+  5. Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_adder:SUM_INST
+  6. Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub
+  7. Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_multiplier:MULT_INST
+  8. Analysis & Elaboration Settings
+  9. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[3].COLS[3].u_bit_mul"
+ 10. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[2].COLS[3].u_bit_mul"
+ 11. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[3].u_bit_mul"
+ 12. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[3].u_bit_mul"
+ 13. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub"
+ 14. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub"
+ 15. Port Connectivity Checks: "ALU:FPGA_ALU|nbit_adder:SUM_INST"
+ 16. Analysis & Elaboration Messages
+ 17. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -39,10 +49,10 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Sun Aug 31 23:51:56 2025       ;
+; Analysis & Elaboration Status ; Successful - Mon Sep 08 19:04:48 2025       ;
 ; Quartus Prime Version         ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                 ; Arithmetic_Logic_Unit                       ;
-; Top-level Entity Name         ; ALU                                         ;
+; Top-level Entity Name         ; Top_ALU                                     ;
 ; Family                        ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
 ; Total registers               ; N/A until Partition Merge                   ;
@@ -59,8 +69,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
-; Maximum allowed            ; 10          ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -70,13 +80,43 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Top-level Entity: |ALU ;
-+----------------+-------+--------------------------------------------+
-; Parameter Name ; Value ; Type                                       ;
-+----------------+-------+--------------------------------------------+
-; n              ; 4     ; Signed Integer                             ;
-+----------------+-------+--------------------------------------------+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; n              ; 4     ; Signed Integer                   ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_adder:SUM_INST ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; N              ; 4     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ALU:FPGA_ALU|nbit_multiplier:MULT_INST ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; N              ; 4     ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -86,8 +126,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Option                                                                          ; Setting            ; Default Value         ;
 +---------------------------------------------------------------------------------+--------------------+-----------------------+
 ; Device                                                                          ; 5CSXFC6D6F31C6     ;                       ;
-; Top-level entity name                                                           ; ALU                ; Arithmetic_Logic_Unit ;
+; Top-level entity name                                                           ; Top_ALU            ; Arithmetic_Logic_Unit ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V             ;
+; Verilog Show LMF Mapping Messages                                               ; Off                ;                       ;
+; Verilog Version                                                                 ; SystemVerilog_2005 ; Verilog_2001          ;
 ; Use smart compilation                                                           ; Off                ; Off                   ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                    ;
 ; Enable compact report table                                                     ; Off                ; Off                   ;
@@ -96,7 +138,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                   ;
 ; Preserve fewer node names                                                       ; On                 ; On                    ;
 ; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable                ;
-; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001          ;
 ; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993             ;
 ; State Machine Processing                                                        ; Auto               ; Auto                  ;
 ; Safe State Machine                                                              ; Off                ; Off                   ;
@@ -167,43 +208,122 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------------------------------------------------+--------------------+-----------------------+
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[3].COLS[3].u_bit_mul"    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[2].COLS[3].u_bit_mul"    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[1].COLS[3].u_bit_mul"    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[3].u_bit_mul"    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub" ;
++------+-------+----------+--------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                        ;
++------+-------+----------+--------------------------------------------------------------------------------+
+; Bin  ; Input ; Info     ; Stuck at GND                                                                   ;
++------+-------+----------+--------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub"                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; V    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:FPGA_ALU|nbit_adder:SUM_INST" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; Cin  ; Input ; Info     ; Stuck at GND                       ;
++------+-------+----------+------------------------------------+
+
+
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sun Aug 31 23:51:49 2025
+    Info: Processing started: Mon Sep 08 19:04:42 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Arithmetic_Logic_Unit -c Arithmetic_Logic_Unit --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file binto7seg.sv
+    Info (12023): Found entity 1: BinTo7Seg File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/BinTo7Seg.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu.sv
-    Info (12023): Found entity 1: ALU File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 1
-Info (12127): Elaborating entity "ALU" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(7): object "div_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 7
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(7): object "mod_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 7
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(8): object "and_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 8
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(8): object "or_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 8
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(8): object "xor_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 8
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(8): object "sleft_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 8
-Warning (10036): Verilog HDL or VHDL warning at ALU.sv(8): object "sright_result" assigned a value but never read File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 8
-Warning (10034): Output port "result" at ALU.sv(4) has no driver File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 4
-Warning (10034): Output port "Z" at ALU.sv(5) has no driver File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 5
-Warning (10034): Output port "N" at ALU.sv(5) has no driver File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 5
-Warning (10034): Output port "V" at ALU.sv(5) has no driver File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 5
-Warning (10034): Output port "C" at ALU.sv(5) has no driver File: C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/ALU.sv Line: 5
-Warning (12158): Entity "ALU" contains only dangling pins
-Info (144001): Generated suppressed messages file C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/output_files/Arithmetic_Logic_Unit.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 4772 megabytes
-    Info: Processing ended: Sun Aug 31 23:51:56 2025
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:17
+    Info (12023): Found entity 1: ALU File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file nbit_adder.sv
+    Info (12023): Found entity 1: nbit_adder File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file nbit_substractor.sv
+    Info (12023): Found entity 1: nbit_subtractor File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file 1bit_subtractor.sv
+    Info (12023): Found entity 1: bit_subtractor File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_subtractor.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.sv
+    Info (12023): Found entity 1: ALU_tb File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU_tb.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file full_adder_1bit.sv
+    Info (12023): Found entity 1: full_adder_1bit File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/full_adder_1bit.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file 1bit_multiplier.sv
+    Info (12023): Found entity 1: bit_multiplier File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/1bit_multiplier.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file nbit_multiplier.sv
+    Info (12023): Found entity 1: nbit_multiplier File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file top_alu.sv
+    Info (12023): Found entity 1: Top_ALU File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(21): created implicit net for "carry_sum" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 21
+Info (12127): Elaborating entity "Top_ALU" for the top level hierarchy
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:FPGA_ALU" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/Top_ALU.sv Line: 23
+Warning (10230): Verilog HDL assignment warning at ALU.sv(128): truncated value with size 32 to match size of target (1) File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 128
+Info (12128): Elaborating entity "nbit_adder" for hierarchy "ALU:FPGA_ALU|nbit_adder:SUM_INST" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 22
+Info (12128): Elaborating entity "full_adder_1bit" for hierarchy "ALU:FPGA_ALU|nbit_adder:SUM_INST|full_adder_1bit:adder_loop[0].FA_inst" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_adder.sv Line: 25
+Info (12128): Elaborating entity "nbit_subtractor" for hierarchy "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 35
+Warning (10034): Output port "V" at nbit_substractor.sv(8) has no driver File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv Line: 8
+Info (12128): Elaborating entity "bit_subtractor" for hierarchy "ALU:FPGA_ALU|nbit_subtractor:u_nbit_sub|bit_subtractor:SUB_BITS[0].u_bit_sub" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_substractor.sv Line: 22
+Info (12128): Elaborating entity "nbit_multiplier" for hierarchy "ALU:FPGA_ALU|nbit_multiplier:MULT_INST" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 46
+Info (12128): Elaborating entity "bit_multiplier" for hierarchy "ALU:FPGA_ALU|nbit_multiplier:MULT_INST|bit_multiplier:ROWS[0].COLS[0].u_bit_mul" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/nbit_multiplier.sv Line: 29
+Info (12128): Elaborating entity "BinTo7Seg" for hierarchy "ALU:FPGA_ALU|BinTo7Seg:display_unidades" File: C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/ALU.sv Line: 81
+Info (144001): Generated suppressed messages file C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/output_files/Arithmetic_Logic_Unit.map.smsg
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4777 megabytes
+    Info: Processing ended: Mon Sep 08 19:04:48 2025
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:12
 
 
 +--------------------------------------------+
 ; Analysis & Elaboration Suppressed Messages ;
 +--------------------------------------------+
-The suppressed messages can be found in C:/Users/gonza/Desktop/lab2 taller/mgonzalez_balpizar_digital_design-_lab2_2025/Pregunta1/output_files/Arithmetic_Logic_Unit.map.smsg.
+The suppressed messages can be found in C:/Users/space/Desktop/Brayan/Taller_Digitales/Taller_2/Pregunta1/output_files/Arithmetic_Logic_Unit.map.smsg.
 
 
